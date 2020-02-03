@@ -1,0 +1,117 @@
+*{
+    margin:  0;
+    padding: 0;
+}
+
+.page{
+    margin: auto;
+}
+
+.home{
+    background-image: url(assets/first-bg.jpg);
+    background-position: center center;
+    background-repeat:no-repeat no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+header{
+    padding-top: 3rem;
+    overflow: hidden;
+}
+
+.logo-container{
+    width: 35%;
+    float: left;
+}
+
+.logo{
+    width: max-content;
+    margin: auto;
+}
+
+.nav-container{
+    width: 65%;
+    float: left;
+}
+nav{
+    width: max-content;
+    margin: auto;
+}
+
+.nav-item{
+    color: #ffffff;
+    font-family: "Arial";
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-right: 1em;
+}
+
+.last-nav-item{
+    margin: 0;
+}
+
+.welcome{
+    padding: 10rem 0;
+    text-align: center;;
+}
+.welcome-h3{
+    color: #ffffff;
+    font-family: "Arial";
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 2rem;
+}
+.welcome-h1{
+    color: #ffffff;
+    font-family: "Arial";
+    text-transform: uppercase;
+    font-size: 4rem;
+    margin-top:2rem;
+}
+.welcome-button{
+    padding: 1em 2em;
+    margin-top: 2rem;
+    border-radius: 0.2em;;
+    color: #484543;
+    background-color: #fed136;
+    border: none;
+    font-family: "Arial";
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.services{
+    text-align: center;;
+    padding: 10rem 0;
+}
+.services-h3{
+    color: #222222;
+    font-family: "Arial";
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.services-h6{
+    margin-top: 1em;
+    color: #777777;
+    font-family: "Arial";
+}
+.services-list{
+    overflow: hidden;
+    width: 80%;
+    margin: auto;
+}
+.services-list-item{
+    box-sizing: border-box;
+    float: left;
+    padding: 3em;
+    width: 33%;
+    min-width: 200px;
+}
+.services-list-item h5{
+    margin-top: 1em;;
+}
+.services-list-item p{
+    margin-top: 1em;;
+}
