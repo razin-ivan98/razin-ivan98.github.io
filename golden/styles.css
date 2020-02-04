@@ -41,6 +41,7 @@ header{
 nav{
     width: max-content;
     margin: auto;
+    z-index: 1000;
 }
 
 .nav-item{
