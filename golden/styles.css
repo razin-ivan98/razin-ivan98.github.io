@@ -1,0 +1,304 @@
+*{
+    margin:  0;
+    padding: 0;
+}
+
+.page{
+    margin: auto;
+}
+
+#home{
+    background-image: url(assets/first-bg.jpg);
+    background-position: center center;
+    background-repeat:no-repeat no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+header{
+    padding-top: 3rem;
+    overflow: hidden;
+}
+
+.logo-container{
+    width: 30%;
+    float: left;
+}
+
+.logo{
+    width: max-content;
+    margin: auto;
+}
+
+.logo img{
+    height: 2rem;
+}
+
+.nav-container{
+    width: 70%;
+    float: left;
+}
+nav{
+    width: max-content;
+    margin: auto;
+}
+
+.nav-item{
+    color: #ffffff;
+    font-family: "Arial";
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-right: 1.5vw;
+}
+.menu-btn{
+    display: none;
+}
+
+#menu-toggle{
+    display: none;
+}
+
+
+.last-nav-item{
+    margin: 0;
+}
+
+.welcome{
+    padding: 10rem 0;
+    text-align: center;;
+}
+.welcome-h3{
+    color: #ffffff;
+    font-family: "Arial";
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 2rem;
+}
+.welcome-h1{
+    color: #ffffff;
+    font-family: "Arial";
+    text-transform: uppercase;
+    font-size: 4rem;
+    margin:2rem 1rem 0 1rem;
+}
+.welcome-button{
+    padding: 1em 2em;
+    margin-top: 2rem;
+    border-radius: 0.2em;;
+    color: #484543;
+    background-color: #fed136;
+    border: none;
+    font-family: "Arial";
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+#services{
+    text-align: center;;
+    padding: 6rem 0;
+}
+.services-h3{
+    color: #222222;
+    font-family: "Arial";
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.services-h6{
+    margin-top: 1em;
+    color: #777777;
+    font-family: "Arial";
+    font-size: 1rem;
+}
+.services-list{
+    overflow: hidden;
+    width: 80%;
+    min-width: 600px;
+    margin: 0 auto;
+    margin-top: 3rem;
+
+}
+.services-list-item{
+    box-sizing: border-box;
+    float: left;
+    padding: 1em;
+    width: 33%;
+}
+.services-list-item h5{
+    margin-top: 1rem;
+    color: #222222;
+    font-family: "Arial";
+    font-size: 1rem;
+}
+.services-list-item p{
+    margin-top: 2em;;
+    color: #777777;
+    font-family: "Arial";
+    font-size: 1rem;
+}
+
+#portfolio{
+    text-align: center;;
+    padding: 6rem 0;
+    background-color: #f7f7f7;
+}
+
+.portfolio-list img{
+    width: 100%;
+}
+
+#about{
+    text-align: center;;
+    padding: 6rem 0 0 0;
+}
+
+.about-list-item{
+    overflow: hidden;
+    font-family: Arial;
+    width: 70%;
+    min-width: 600px;
+    margin: 3rem auto;
+}
+.about-list-item img{
+    width: 100%;
+    max-width: 15rem;
+}
+.about-list-item h4{
+    margin-bottom: 1rem;
+}
+.about-list-item h4.date{
+    text-transform: uppercase;
+}
+.about-list-item p{
+    color:#777777;
+    line-height:1.5;
+}
+.about-list-item-left, .about-list-item-center, .about-list-item-right{
+    width: 30%;
+    box-sizing: border-box;
+    float: left;
+    padding: 1em;
+}
+.about-list-item-left{
+    text-align: right;
+}
+.about-list-item-center{
+    width: 40%;
+}
+.about-list-item-right{
+    text-align: left;
+}
+footer{
+    text-align: center;
+    font-family: Arial;
+    color: #555555;
+    padding: 2rem;
+}
+
+@media screen and (max-width: 600px){
+    #services, #portfolio, #about{
+        padding-top: 3rem;
+    }
+
+
+    header{
+        padding: 1rem;
+        position: fixed;
+        left: 0;
+        width: calc(100% - 2rem);/* тупое говно */
+        background-color: #484543;
+    }
+    .services-list{
+        overflow: initial;
+        width: 80%;
+        min-width: 0;
+        margin: 0 auto;
+    }
+    .services-list-item{
+        padding: 2em;
+        width: 100%;
+        float: none;
+        min-width: 0;
+    }
+
+    .logo img{
+        height: 3rem;
+    }
+    .nav-container{
+        width: max-content;
+        float: right;
+    }
+    nav{
+        visibility: hidden;
+        position:fixed;
+        
+        left: 100vw;
+        width: 100%;
+        text-align: center;
+        background-color: #484543;
+        
+        transition-duration: .25s;
+    }
+    .menu-btn{
+        text-align: center;
+        display: block;
+        height: 3rem;
+        width: 3rem;
+        background-color: khaki;
+        border-radius: 0.2rem;;
+    }
+    .menu-btn > span,
+    .menu-btn > span::before,
+    .menu-btn > span::after {
+        display: block;
+        top: 1.3rem;
+        left: 0.5rem;
+        position: relative;
+        width: 2rem;
+        height: 0.4rem;
+        background-color: #616161;
+    }
+    .menu-btn > span::before {
+      content: '';
+      top: -0.8rem;
+      left: 0;
+    }
+    .menu-btn > span::after {
+      content: '';
+      top: 0.4rem;
+      left: 0;
+    }
+
+    #menu-toggle:checked ~ .menu-btn > span::after {
+        top: 0.8rem;
+    }
+
+    #menu-toggle:checked ~ nav {
+        visibility: visible;
+        left: 0;
+        
+    }
+
+    .menu-btn > span::after {
+        transition-duration: .25s;
+    }
+
+    .nav-item{
+        margin: 0;
+        display: block;
+        font-size: 2rem;;
+        transition-duration: .25s;
+    }
+    .nav-item:hover {
+        background-color: #616161;
+    }
+
+    .about-list-item{
+        min-width: 0;
+        width: 100%;
+    }
+    .about-list-item-left, .about-list-item-right{
+        width: fit-content;
+        max-width: 50%;
+    }
+}
