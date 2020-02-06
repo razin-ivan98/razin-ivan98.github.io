@@ -30,6 +30,8 @@ header{
 }
 .logo{
     width: max-content;
+    width: -moz-max-content;
+    width: -webkit-max-content;
     margin: 0 auto;
 }
 .logo img{
@@ -239,8 +241,8 @@ footer{
     }
     .nav-container{
         width: min-content;
-        width: -moz-max-content;
-        width: -webkit-max-content;
+        width: -moz-min-content;
+        width: -webkit-min-content;
         float: right;
         overflow: visible;
     }
