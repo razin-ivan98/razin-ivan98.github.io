@@ -233,11 +233,12 @@ footer{
     .nav-container{
         width: min-content;
         float: right;
+        overflow: visible;
     }
     nav{
         visibility: hidden;
         position:fixed;
-        overflow: visible;
+        
         left: 100vw;
         width: 100%;
         text-align: center;
