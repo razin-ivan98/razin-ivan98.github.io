@@ -220,6 +220,7 @@ footer{
         left: 0;
         width: calc(100% - 2rem);/* тупое говно */
         background-color: #484543;
+        overflow: visible;
     }
 
     /* header logo */
@@ -230,6 +231,9 @@ footer{
 
     /* header navigation */
 
+    .hamburger{
+        overflow: visible;
+    }
     .nav-container{
         width: min-content;
         float: right;
