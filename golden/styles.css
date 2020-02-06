@@ -13,26 +13,29 @@
     background-repeat:no-repeat no-repeat;
     background-size: cover;
     overflow: hidden;
+    z-index: 2000;
 }
+
+/* header */
 
 header{
     padding-top: 3rem;
     overflow: hidden;
 }
+/* header logo */
 
 .logo-container{
     width: 30%;
     float: left;
 }
-
 .logo{
     width: max-content;
-    margin: auto;
+    margin: 0 auto;
 }
-
 .logo img{
     height: 2rem;
 }
+/* header navigation */
 
 .nav-container{
     width: 70%;
@@ -40,10 +43,9 @@ header{
 }
 nav{
     width: max-content;
-    margin: auto;
+    margin: 0 auto;
     z-index: 1000;
 }
-
 .nav-item{
     color: #ffffff;
     font-family: "Arial";
@@ -51,18 +53,21 @@ nav{
     text-transform: uppercase;
     margin-right: 1.5vw;
 }
-.menu-btn{
-    display: none;
-}
-
-#menu-toggle{
-    display: none;
-}
-
 
 .last-nav-item{
     margin: 0;
 }
+
+/* hamburger-menu */
+
+.menu-btn{
+    display: none;
+}
+#menu-toggle{
+    display: none;
+}
+
+/* first section: welcome */
 
 .welcome{
     padding: 10rem 0;
@@ -94,6 +99,8 @@ nav{
     font-size: 1rem;
     text-transform: uppercase;
 }
+
+/* second section: services */
 
 #services{
     text-align: center;;
@@ -138,21 +145,23 @@ nav{
     font-size: 1rem;
 }
 
+/* third section: portfolio */
+
 #portfolio{
     text-align: center;;
     padding: 6rem 0;
     background-color: #f7f7f7;
 }
-
 .portfolio-list img{
     width: 100%;
 }
+
+/* fourth section: about us */
 
 #about{
     text-align: center;;
     padding: 6rem 0 0 0;
 }
-
 .about-list-item{
     overflow: hidden;
     font-family: Arial;
@@ -189,6 +198,9 @@ nav{
 .about-list-item-right{
     text-align: left;
 }
+
+/* footer */
+
 footer{
     text-align: center;
     font-family: Arial;
@@ -196,11 +208,11 @@ footer{
     padding: 2rem;
 }
 
-@media screen and (max-width: 600px){
-    #services, #portfolio, #about{
-        padding-top: 3rem;
-    }
+/* screen width < 600px */
 
+@media screen and (max-width: 600px){
+
+    /* header */
 
     header{
         padding: 1rem;
@@ -209,37 +221,42 @@ footer{
         width: calc(100% - 2rem);/* тупое говно */
         background-color: #484543;
     }
-    .services-list{
-        overflow: initial;
-        width: 80%;
-        min-width: 0;
-        margin: 0 auto;
-    }
-    .services-list-item{
-        padding: 2em;
-        width: 100%;
-        float: none;
-        min-width: 0;
-    }
+
+    /* header logo */
 
     .logo img{
         height: 3rem;
     }
+
+    /* header navigation */
+
     .nav-container{
-        width: max-content;
+        width: min-content;
         float: right;
     }
     nav{
         visibility: hidden;
         position:fixed;
-        
+        overflow: visible;
         left: 100vw;
         width: 100%;
         text-align: center;
-        background-color: #484543;
+        background-color:#484543;
         
         transition-duration: .25s;
     }
+    .nav-item{
+        margin: 0;
+        display: block;
+        font-size: 2rem;;
+        transition-duration: .25s;
+    }
+    .nav-item:hover {
+        background-color: #616161;
+    }
+
+    /* menu */
+
     .menu-btn{
         text-align: center;
         display: block;
@@ -269,30 +286,40 @@ footer{
       top: 0.4rem;
       left: 0;
     }
-
     #menu-toggle:checked ~ .menu-btn > span::after {
         top: 0.8rem;
     }
-
     #menu-toggle:checked ~ nav {
         visibility: visible;
         left: 0;
         
     }
-
     .menu-btn > span::after {
         transition-duration: .25s;
     }
 
-    .nav-item{
-        margin: 0;
-        display: block;
-        font-size: 2rem;;
-        transition-duration: .25s;
+    /* all sections */
+
+    #services, #portfolio, #about{
+        padding-top: 3rem;
     }
-    .nav-item:hover {
-        background-color: #616161;
+
+    /* servises */
+
+    .services-list{
+        overflow: initial;
+        width: 80%;
+        min-width: 0;
+        margin: 0 auto;
     }
+    .services-list-item{
+        padding: 2em;
+        width: 100%;
+        float: none;
+        min-width: 0;
+    }
+
+    /* about us */
 
     .about-list-item{
         min-width: 0;
