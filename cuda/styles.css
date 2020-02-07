@@ -82,7 +82,7 @@ header{
     background-color: #000;
     top: -1rem;
     left: calc(100% / 2 - 1.5rem);
-    opacity: 20%;
+    opacity: 0.2;
 }
 
 .container{

@@ -1,8 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 section{
@@ -19,26 +18,15 @@ header{
 }
 
 .header__container{
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-between;
 }
 .logo-container{
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+    align-self: center;
 }
 .nav-container{
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+    align-self: center;
 }
 .btn{
     color: #fff;
@@ -106,19 +94,14 @@ header{
 
 .list{
     margin-top: 4rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-around;
     
 }
 .icons-list{
     margin: 0;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
+    flex-wrap: nowrap;
 }
 .icons-list > .list__item{
     margin-top: 2rem;
@@ -126,8 +109,7 @@ header{
     padding: 0;
 }
 .list__item{
-    -ms-flex-preferred-size: 25%;
-        flex-basis: 25%;
+    flex-basis: 25%;
     padding: 1rem;
     min-width: 200px;
 }
@@ -137,16 +119,9 @@ header{
 }
 
 .team .list__item{
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .list__title{
@@ -231,8 +206,7 @@ header{
 }
 
 .portfolio__list .list__item{
-    -ms-flex-preferred-size: 50%;
-        flex-basis: 50%;
+    flex-basis: 50%;
 }
 .portfolio__list .list__item img{
     width: 100%;
@@ -265,17 +239,12 @@ header{
     margin-top: 0;
 }
 .about .list__item{
-    -ms-flex-preferred-size: 40%;
-        flex-basis: 40%;
+    flex-basis: 40%;
     min-width: 300px;
 }
 .about .list__item{
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
 }
 
 .form{
@@ -291,18 +260,9 @@ header{
 
 .form__form{
     
-    display:-webkit-box;
-    
-    display:-ms-flexbox;
-    
     display:flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-between;
     width: 60%;
     min-width: 300px;
     margin: 0 auto;
@@ -310,12 +270,8 @@ header{
 }
 
 .form__form > div{
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
 }
 .form__form > div input{
     width: 48%;
@@ -338,26 +294,6 @@ header{
     padding: 1rem;
 }
 
-input::-webkit-input-placeholder{
-    color: #fff;
-    font-family: Titillium Web;
-}
-
-input::-moz-placeholder{
-    color: #fff;
-    font-family: Titillium Web;
-}
-
-input:-ms-input-placeholder{
-    color: #fff;
-    font-family: Titillium Web;
-}
-
-input::-ms-input-placeholder{
-    color: #fff;
-    font-family: Titillium Web;
-}
-
 input::placeholder{
     color: #fff;
     font-family: Titillium Web;
@@ -372,26 +308,6 @@ input::-moz-placeholder{
 } 
  input:-ms-input-placeholder{
     color: #fff; 
-    font-family: Titillium Web;
-}    
-
-textarea::-webkit-input-placeholder{
-    color: #fff;
-    font-family: Titillium Web;
-}    
-
-textarea::-moz-placeholder{
-    color: #fff;
-    font-family: Titillium Web;
-}    
-
-textarea:-ms-input-placeholder{
-    color: #fff;
-    font-family: Titillium Web;
-}    
-
-textarea::-ms-input-placeholder{
-    color: #fff;
     font-family: Titillium Web;
 }    
 
@@ -418,13 +334,9 @@ footer{
 }
 
 .footer__menu{
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .footer__menu .menu__item{
