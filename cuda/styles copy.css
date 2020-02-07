@@ -1,0 +1,437 @@
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+section{
+    padding: 3rem 0;
+}
+.home{
+    background-color: #87509c;
+    padding: 6rem 0;
+}
+header{
+    
+    padding: 2rem 2rem 0 2rem;
+    background-color: #87509c;
+}
+
+.header__container{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+.logo-container{
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+}
+.nav-container{
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+}
+.btn{
+    color: #fff;
+    text-transform: uppercase;
+    padding: 1rem 3rem;
+    margin: 2rem auto 0 auto;
+    border: none;
+    border-bottom: 0.2rem solid ;
+    border-radius: 0.2rem;
+}
+
+.home__btn{
+    background-color: #eb7d4b;
+    border-color: #c86a40;
+}
+.title{
+    font-size: 2rem;
+    font-family: Titillium Web;
+    font-weight: bold;
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+}
+.subtitle{
+    font-family: Titillium Web;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    color: #fff;
+    font-weight: normal;
+    position: relative;
+}
+.subtitle::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 3rem;
+    height: 0.2rem;
+    border-radius: 0.1rem;
+    background-color: #000;
+    top: -1rem;
+    left: calc(100% / 2 - 1.5rem);
+    opacity: 20%;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.menu__item{
+    text-decoration: none;
+    color: #fff;
+    font-family: Titillium Web;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 0.2rem 1rem;
+    border-radius: 0.2rem;
+}
+.menu__item:hover{
+    background-color: #643a79;
+}
+
+.list{
+    margin-top: 4rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    
+}
+.icons-list{
+    margin: 0;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+}
+.icons-list > .list__item{
+    margin-top: 2rem;
+    min-width: 25%;
+    padding: 0;
+}
+.list__item{
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+    padding: 1rem;
+    min-width: 200px;
+}
+
+.list__item > img{
+    max-height: 7rem;
+}
+
+.team .list__item{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+.list__title{
+    font-family: Titillium Web;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 3rem;
+}
+.list__subsubtitle{
+    font-family: Titillium Web;
+    color: #30bae7;
+    margin-top: 1rem;
+}
+.list__text{
+    color: #fff;
+    font-family: Titillium Web;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.services .list__title{
+    color: #fff;
+} 
+
+
+.menu{
+    width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+}
+
+.services{
+    background-color: #17c2a4;
+}
+
+.team{
+    background-color: #e7f1f8;
+}
+.team__title{
+    color: #3c4761;
+}
+.team__subtitle{
+    color: #3c4761;
+}
+
+.team .list__title{
+    color: #3c4761;
+}
+.team .list__text{
+    color: #3c4761;
+}
+
+
+.skills__title{
+    color: #3c4761;
+}
+.skills__subtitle{
+    color: #3c4761;
+}
+
+
+
+.portfolio{
+    background-color: #ffdd99;
+}
+.portfolio__title{
+    color:#393939;
+}
+.portfolio__subtitle{
+    color:#393939;
+}
+.portfolio__menu{
+    margin: 2rem auto 0 auto;
+}
+.portfolio__menu .menu__item{
+    background-color: #ebcb8d;
+    color:#6a6150;
+    font-weight: bold;
+}
+.portfolio__menu .menu__item:hover{
+    background-color: #ffffff;
+}
+
+.portfolio__list .list__item{
+    -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+}
+.portfolio__list .list__item img{
+    width: 100%;
+    max-height: 100%;
+}
+.portfolio__btn{
+    background-color: #17c2a4;
+    border-color: #15af94;
+    margin-top: 3rem;
+}
+
+.about{
+    background-color: #d74680;
+}
+.about__title, .about__subtitle{
+    color:#fff;
+}
+
+.about .list__title{
+    color: #fff;
+    margin-top: 1rem;
+}
+.about .list__cursive{
+    color: #fff;
+    font-family: Titillium Web;
+    font-style: italic;
+}
+.about .list__subsubtitle{
+    color: #ffdd99;
+    margin-top: 0;
+}
+.about .list__item{
+    -ms-flex-preferred-size: 40%;
+        flex-basis: 40%;
+    min-width: 300px;
+}
+.about .list__item{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+.form{
+    background-color: #3c5499;
+}
+.form__subtitle{
+    min-width: 70%;
+}
+.form__btn{
+    background-color:#30bae7;
+    border-color: #299ec4; 
+}
+
+.form__form{
+    
+    display:-webkit-box;
+    
+    display:-ms-flexbox;
+    
+    display:flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 60%;
+    min-width: 300px;
+    margin: 0 auto;
+    margin-top: 3rem;
+}
+
+.form__form > div{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+.form__form > div input{
+    width: 48%;
+}
+
+.form__form textarea{
+    margin-top: 1rem;
+    resize: vertical;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #273a71;
+    padding: 1rem;
+}
+
+.form__form input{
+    border: none;
+    height: 2rem;
+    border-radius: 0.2rem;
+    background-color: #273a71;
+    padding: 1rem;
+}
+
+input::-webkit-input-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+}
+
+input::-moz-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+}
+
+input:-ms-input-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+}
+
+input::-ms-input-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+}
+
+input::placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+}
+input::-moz-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+} 
+ input:-webkit-input-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+} 
+ input:-ms-input-placeholder{
+    color: #fff; 
+    font-family: Titillium Web;
+}    
+
+textarea::-webkit-input-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+}    
+
+textarea::-moz-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+}    
+
+textarea:-ms-input-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+}    
+
+textarea::-ms-input-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+}    
+
+textarea::placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+}
+textarea::-moz-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+} 
+textarea:-webkit-input-placeholder{
+    color: #fff;
+    font-family: Titillium Web;
+} 
+textarea:-ms-input-placeholder{
+    color: #fff; 
+    font-family: Titillium Web;
+}  
+
+footer{
+    background-color: #344b8e;
+    padding: 1rem 0;
+}
+
+.footer__menu{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+.footer__menu .menu__item{
+    background-color: unset;
+    text-transform: none;
+}
+.footer__menu .menu__item:hover{
+    background-color: unset;
+    color: #30bae7;
+}
