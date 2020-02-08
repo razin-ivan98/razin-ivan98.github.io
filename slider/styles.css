@@ -1,0 +1,103 @@
+*{
+    box-sizing: border-box;
+}
+
+.page{
+    width: 80%;
+    min-width: 300px;
+    padding-top:2rem;
+    margin: 0 auto;
+}
+
+.slide-container{
+    position: relative;
+}
+
+.slide{
+    display: none;
+    position: relative;
+}
+.slide img{
+    width: 100%;
+}
+.title{
+    position: absolute;
+    bottom: 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.number{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1rem;
+    color:#fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.prev, .next{
+    cursor: pointer;
+    position: absolute;
+    top: calc(50% - 2rem);
+    font-size: 2rem;
+    padding: 1rem;
+    width: auto;
+    color: #fff;
+    border-radius: 0 0.2rem 0.2rem 0;
+    
+    transition: 0.6s ease;
+    font-weight: bold;
+}
+
+.dot-container{
+    width: max-content;
+    margin: 1rem auto;
+}
+
+.dot{
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.5rem;
+    background-color: #bbb;
+    cursor: pointer;
+    transition: background-color 0.6s ease;
+}
+.activeDot{
+    background-color: #717171; 
+}
+
+.prev:hover, .next:hover{
+    background-color: rgba(0,0,0,0.8);
+}
+.next{
+    right: 0;
+    border-radius: 0.2rem 0 0 0.2rem;
+}
+
+.activeSlide{
+    display:block;
+}
+
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+  
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
