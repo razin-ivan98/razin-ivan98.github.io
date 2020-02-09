@@ -10,7 +10,17 @@
 }
 
 .slide-container{
+    width: max-content;
+    max-width: 100%;
     position: relative;
+    margin: 0 auto;
+}
+
+.slide-container{
+    transition: 0.5s;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
 }
 
 .slide{
@@ -19,6 +29,7 @@
 }
 .slide img{
     width: 100%;
+    max-height: 80vh;
 }
 .title{
     position: absolute;
@@ -52,6 +63,11 @@
     
     transition: 0.6s ease;
     font-weight: bold;
+
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
 }
 
 .dot-container{

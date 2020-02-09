@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: 'Lato', sans-serif;
+}
+
+.container{
+    width: 80%;
+    min-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+section{
+    padding: 4rem 0;
+}
+header{
+    padding: 0.5rem;
+}
+.flex-wrapper-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav{
+    width: max-content;
+}
+.menu-item{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #868686;
+    padding: 0.3rem 1rem;
+    font-size: 0.6rem;
+    border-radius: 0.1rem;;
+}
+.menu-item:hover{
+    color: #fff;
+    background-color: #ffbb42;
+}
+.logo img{
+    height: 2rem;
+}
+
+.home{
+    background-color: #709dca;
+}
+
+.title{
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.subtitle{
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+}
+
+input{
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+    border-radius: 0.1rem;
+    padding: 0.5rem;
+}
+input::-webkit-input-placeholder{
+    color: #a9a9a9;
+    font-family: 'Open Sans', sans-serif;
+}
+input::-moz-placeholder{
+    color: #a9a9a9;
+    font-family: 'Open Sans', sans-serif;
+}
+input:-ms-input-placeholder{
+    color: #a9a9a9;
+    font-family: 'Open Sans', sans-serif;
+}
+input::placeholder{
+    color: #a9a9a9;
+    font-family: 'Open Sans', sans-serif;
+} 
+
+.home__btn{
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 0.1rem;
+    background-color: #ffbb42;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+}
+
+.home__form{
+    margin-top: 2rem;
+}
+
+.home__laptop img{
+    height: 15rem;
+}
+.laptop-image-container{
+    width: min-content;
+    position: relative;
+}
+.home__laptop {
+    width: max-content;
+    margin: 0 auto;
+    margin-top: 2rem;;
+}
+.slider{
+    position: absolute;
+    top: 5%;
+    left: 15.8%;
+    width: 69%;
+    height: 75%;
+    background-image: url(assets/Layer_24.png);
+    background-size: cover;
+    transition: background 0.5s ease;
+}
+
+
+.dots-container{
+    margin-top: 1rem;
+}
+.dot{
+    margin: 0 0.1rem;
+    display: inline-block;
+    border-radius: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #e7e8e8;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+.dot-active{
+    border-color: #56bee6;
+}

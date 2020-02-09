@@ -353,27 +353,10 @@ input:-ms-input-placeholder{
     font-family: Titillium Web;
 }
 
-input::-ms-input-placeholder{
-    color: #fff;
-    font-family: Titillium Web;
-}
-
 input::placeholder{
     color: #fff;
     font-family: Titillium Web;
-}
-input::-moz-placeholder{
-    color: #fff;
-    font-family: Titillium Web;
 } 
- input:-webkit-input-placeholder{
-    color: #fff;
-    font-family: Titillium Web;
-} 
- input:-ms-input-placeholder{
-    color: #fff; 
-    font-family: Titillium Web;
-}    
 
 textarea::-webkit-input-placeholder{
     color: #fff;
