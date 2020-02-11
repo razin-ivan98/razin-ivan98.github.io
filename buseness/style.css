@@ -44,7 +44,8 @@ nav{
 }
 
 .home{
-    background-color: #709dca;
+    background: linear-gradient(to bottom, #709dca 85%, #fff 15%);
+    padding-bottom: 0;
 }
 
 .title{
@@ -114,7 +115,6 @@ input::placeholder{
     left: 15.8%;
     width: 69%;
     height: 75%;
-    background-image: url(assets/Layer_24.png);
     background-size: cover;
     transition: background 0.5s ease;
 }
@@ -135,4 +135,170 @@ input::placeholder{
 }
 .dot-active{
     border-color: #56bee6;
+}
+
+
+
+.services__title, .services__subtitle{
+    color: #394b50;
+}
+
+
+.list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.list__item{
+    margin-top: 3rem;
+    flex-basis: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.list__item > img{
+    max-height: 2.5rem;;
+    max-width: 2.5rem;
+    margin: 0 auto;
+}
+.list__item > div{
+    width: 80%;
+}
+.list__title{
+    color: #394b50;
+    text-align: left;
+}
+.list__text{
+    margin-top: 1rem;
+    color:#7b7b7b;
+    font-size: 0.7rem;
+    text-align: left;
+}
+
+.about{
+    padding: 0;
+    display: flex;
+    justify-content: left;
+}
+.left-background{
+    background-image: url(assets/about/Layer_27@2x.png);
+    background-size: cover;
+    width: 50%;
+}
+.right-background{
+    background-color: #ffc155;
+    width: 50%;
+}
+
+.about__container{
+    width: 80%;
+    padding: 7rem 0 7rem 3rem;
+}
+.about__title{
+    color: #fff;
+}
+.about__subtitle{
+    margin-top: 1rem;
+    color: #fff;
+}
+.about__btn{
+    margin-top: 2rem;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #e7ad48;
+    border-radius: 0.1rem;
+    background-color: #ffc155;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+}
+
+.price{
+    background-color: #e7edf3;
+}
+
+.price__list{
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.price .list__item{
+    background-color: #fff;
+    padding: 3rem 0;
+    transition: 0.4s ease;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.price .list__title{
+    text-align: center;
+    color: #818b95;
+    text-transform: uppercase;
+    font-weight: normal;
+    transition: 1s ease;
+}
+.price .cash{
+    font-size: 3rem;
+    color: #ffbb42;
+    margin-top: 1rem;
+    transition: 1s ease;
+}
+.list__subtitle{
+    text-transform: uppercase;
+    color: #818b95;
+    margin-bottom: 0;
+    transition: 1s ease;
+}
+.list__subtitle_demarked{
+    color: #b6c0ca;
+    margin-top: 1.5rem;
+    display: block;
+    position: relative;
+}
+.list__subtitle_demarked::before{
+    display: block;
+    content: "";
+    width: 80%;
+    height: 0.1rem;
+    position: absolute;
+    top: -0.75rem;
+    left: 10%;
+    background-color: #e2e9f0;
+}
+
+.price__btn{
+    margin-top: 2rem;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 0.1rem;
+    background-color: #ffc155;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+}
+
+
+/* hover */
+
+.price .list__item:hover{
+    background-color: #709dca;
+    padding: 4rem 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #fff;
+}
+.price .list__item:hover > .list__title{
+    color: #fff;
+}
+.price .list__item:hover > .list__subtitle{
+    color: #fff;
+}
+.price .list__item:hover > .cash{
+    color: #fff;
+}
+
+
+@media screen and (max-width: 700px){
+    
 }
