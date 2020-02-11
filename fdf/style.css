@@ -34,3 +34,10 @@ button{
     font-size: 3rem;
     text-transform: uppercase;
 }
+
+p{
+    text-align: center;
+    color: peru;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 2rem;
+}

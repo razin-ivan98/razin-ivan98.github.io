@@ -38,6 +38,14 @@ function clickCanvas(event) {
 }
 
 window.onload = function () {
+
+    this.document.addEventListener('touchmove', function (event) {
+        if (event.scale !== 1) {
+            event.preventDefault();
+        }
+    });
+
+
     width = width = document.body.clientWidth;
     canvas = this.document.querySelector('#canvas');
     if (width < 500) {
