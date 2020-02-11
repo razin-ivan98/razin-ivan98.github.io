@@ -11,6 +11,8 @@ var arr = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
+var width;
+
 var screen_arr = [];
 var selected = { x: 0, y: 0 };
 
@@ -36,8 +38,15 @@ function clickCanvas(event) {
 }
 
 window.onload = function () {
-
+    width = width = document.body.clientWidth;
     canvas = this.document.querySelector('#canvas');
+    if (width < 500) {
+        canvas.setAttribute('width', this.width);
+        canvas.setAttribute('height', width);
+    }
+    else {
+        this.width = 500;
+    }
     context = canvas.getContext('2d');
     canvas.onclick = this.clickCanvas;
     this.recalc();
@@ -82,9 +91,9 @@ function point_proj(x, y, z) {
 
     x -= arr[0].length / 2;
     y -= arr.length / 2;
-    x *= 75;
-    y *= 75;
-    z *= 75;
+    x *= width / 6.5;
+    y *= width / 6.5;
+    z *= width / 6.5;
 
     // let point = {
     //     x: (x - y) * Math.sqrt(3) / 2 + 250,
@@ -94,8 +103,8 @@ function point_proj(x, y, z) {
     let h = 1000 - (z / 2 + (x + y) * 0.612);
 
     let point = {
-        x: 1000 / (1000 + h) * (x - y) * 0.707 + 250,
-        y: 1000 / (1000 + h) * ((x + y) * 0.35 - z * 0.866) + 250
+        x: 1000 / (1000 + h) * (x - y) * 0.707 + width / 2,
+        y: 1000 / (1000 + h) * ((x + y) * 0.35 - z * 0.866) + width / 1.5
     }
     return point;
 }
