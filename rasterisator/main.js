@@ -16,7 +16,55 @@ var beta = 0;
 
 var width;
 
+var mode = 0;
 
+class Vertex {
+    constructor(x, y, z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+}
+class Triangle {
+    constructor(vertexNums, color) {
+        this.vertexNums = vertexNums;
+        this.color = color;
+    }
+}
+class Model {
+    constructor(vertexes, triangles) {
+        this.vertexes = vertexes;
+        this.triangles = triangles;
+    }
+}
+
+var vAf = new Vertex(1, 1, 1),
+    vBf = new Vertex(-1, 1, 1),
+    vCf = new Vertex(-1, -1, 1),
+    vDf = new Vertex(1, -1, 1),
+
+    vAb = new Vertex(1, 1, -1),
+    vBb = new Vertex(-1, 1, -1),
+    vCb = new Vertex(-1, -1, -1),
+    vDb = new Vertex(1, -1, -1)
+
+var tr1 = new Triangle([0, 1, 2], 'red')
+var tr2 = new Triangle([0, 2, 3], 'red')
+var tr3 = new Triangle([4, 0, 3], 'green')
+var tr4 = new Triangle([4, 3, 7], 'green')
+var tr5 = new Triangle([5, 4, 7], 'blue')
+var tr6 = new Triangle([5, 7, 6], 'blue')
+var tr7 = new Triangle([1, 5, 6], 'yellow')
+var tr8 = new Triangle([1, 6, 2], 'yellow')
+var tr9 = new Triangle([4, 5, 1], 'purple')
+var tr10 = new Triangle([4, 1, 0], 'purple')
+var tr11 = new Triangle([2, 6, 7], 'cyan')
+var tr12 = new Triangle([2, 7, 3], 'cyan')
+
+var vertexes = [vAf, vBf, vCf, vDf, vAb, vBb, vCb, vDb];
+var triangles = [tr1, tr2, tr3, tr4, tr5, tr6, tr7, tr8, tr9, tr10, tr11, tr12];
+
+var model = new Model(vertexes, triangles);
 
 function canvasMouseDown(event) {
     is_rot = 1
@@ -77,18 +125,21 @@ function canvasTouchMove(event) {
 
 
 function pointRotateX(v) {
-    return {
-        x: v.x,
-        y: v.y * Math.cos(alpha) + v.z * Math.sin(alpha),
-        z: v.y * (-Math.sin(alpha)) + v.z * Math.cos(alpha)
-    };
+    console.log('rot');
+    let vertex = new Vertex(
+        v.x,
+        v.y * Math.cos(alpha) + v.z * Math.sin(alpha),
+        v.y * (-Math.sin(alpha)) + v.z * Math.cos(alpha)
+    )
+    return vertex;
 }
 function pointRotateY(v) {
-    return {
-        x: v.x * Math.cos(beta) + v.z * (-Math.sin(beta)),
-        y: v.y,
-        z: v.x * Math.sin(beta) + v.z * Math.cos(beta)
-    };
+    let vertex = new Vertex(
+        v.x * Math.cos(beta) + v.z * (-Math.sin(beta)),
+        v.y,
+        v.x * Math.sin(beta) + v.z * Math.cos(beta)
+    )
+    return vertex;
 }
 
 
@@ -106,16 +157,9 @@ function projectVertex(v) {
         v.y * (d / (d - v.z)))
 }
 // Четыре "передних" вершины.
-var vAf = { x: -1, y: 1, z: -1 },
-    vBf = { x: 1, y: 1, z: -1 },
-    vCf = { x: 1, y: -1, z: -1 },
-    vDf = { x: -1, y: -1, z: -1 },
 
-    /// Четыре "задних" вершины.
-    vAb = { x: -1, y: 1, z: 1 },
-    vBb = { x: 1, y: 1, z: 1 },
-    vCb = { x: 1, y: -1, z: 1 },
-    vDb = { x: -1, y: -1, z: 1 }
+
+
 
 
 function drawLine(f, s, color) {
@@ -123,9 +167,8 @@ function drawLine(f, s, color) {
     context.strokeStyle = color;
     context.moveTo(f.x, f.y);
     context.lineTo(s.x, s.y);
-    context.stroke();
-}
 
+}
 
 window.onload = function () {
     canvas = this.document.querySelector('#canvas');
@@ -151,48 +194,95 @@ window.onload = function () {
 }
 
 function rotX() {
-    vAf = pointRotateX(vAf);
-    vBf = pointRotateX(vBf);
-    vCf = pointRotateX(vCf);
-    vDf = pointRotateX(vDf);
+    for (let i = 0; i < model.vertexes.length; i++) {
+        model.vertexes[i] = pointRotateX(model.vertexes[i]);
+    }
+    // vAf = pointRotateX(vAf);
+    // vBf = pointRotateX(vBf);
+    // vCf = pointRotateX(vCf);
+    // vDf = pointRotateX(vDf);
 
-    /// Четыре "задних" вершины.
-    vAb = pointRotateX(vAb);
-    vBb = pointRotateX(vBb);
-    vCb = pointRotateX(vCb);
-    vDb = pointRotateX(vDb);
+    // /// Четыре "задних" вершины.
+    // vAb = pointRotateX(vAb);
+    // vBb = pointRotateX(vBb);
+    // vCb = pointRotateX(vCb);
+    // vDb = pointRotateX(vDb);
 }
 function rotY() {
-    vBf = pointRotateY(vBf);
-    vAf = pointRotateY(vAf);
-    vCf = pointRotateY(vCf);
-    vDf = pointRotateY(vDf);
+    for (let i = 0; i < model.vertexes.length; i++) {
+        model.vertexes[i] = pointRotateY(model.vertexes[i]);
+    }
+    // vBf = pointRotateY(vBf);
+    // vAf = pointRotateY(vAf);
+    // vCf = pointRotateY(vCf);
+    // vDf = pointRotateY(vDf);
 
-    /// Четыре "задних" вершины.
-    vAb = pointRotateY(vAb);
-    vBb = pointRotateY(vBb);
-    vCb = pointRotateY(vCb);
-    vDb = pointRotateY(vDb);
+    // /// Четыре "задних" вершины.
+    // vAb = pointRotateY(vAb);
+    // vBb = pointRotateY(vBb);
+    // vCb = pointRotateY(vCb);
+    // vDb = pointRotateY(vDb);
 }
 
 function redraw() {
-    // Передняя грань.
     context.clearRect(0, 0, canvas.width, canvas.height);
+    if (mode == 0) {
+        // Передняя грань.
 
-    drawLine(projectVertex(vAf), projectVertex(vBf), 'BLUE');
-    drawLine(projectVertex(vBf), projectVertex(vCf), 'BLUE');
-    drawLine(projectVertex(vCf), projectVertex(vDf), 'BLUE');
-    drawLine(projectVertex(vDf), projectVertex(vAf), 'BLUE');
 
-    // Задняя грань.
-    drawLine(projectVertex(vAb), projectVertex(vBb), 'RED');
-    drawLine(projectVertex(vBb), projectVertex(vCb), 'RED');
-    drawLine(projectVertex(vCb), projectVertex(vDb), 'RED');
-    drawLine(projectVertex(vDb), projectVertex(vAb), 'RED');
+        for (let tr of model.triangles) {
+            let f, s, t;
+            f = tr.vertexNums[0];
 
-    // Рёбра, соединяющие переднюю и заднюю грани.
-    drawLine(projectVertex(vAf), projectVertex(vAb), 'GREEN');
-    drawLine(projectVertex(vBf), projectVertex(vBb), 'GREEN');
-    drawLine(projectVertex(vCf), projectVertex(vCb), 'GREEN');
-    drawLine(projectVertex(vDf), projectVertex(vDb), 'GREEN');
+            s = tr.vertexNums[1];
+            t = tr.vertexNums[2];
+            drawLine(projectVertex(model.vertexes[f]), projectVertex(model.vertexes[s]), tr.color);
+            context.stroke();
+            drawLine(projectVertex(model.vertexes[s]), projectVertex(model.vertexes[t]), tr.color);
+            context.stroke();
+            drawLine(projectVertex(model.vertexes[t]), projectVertex(model.vertexes[f]), tr.color);
+            context.stroke();
+        }
+
+        // drawLine(projectVertex(vAf), projectVertex(vBf), 'BLUE');
+        // drawLine(projectVertex(vBf), projectVertex(vCf), 'BLUE');
+        // drawLine(projectVertex(vCf), projectVertex(vDf), 'BLUE');
+        // drawLine(projectVertex(vDf), projectVertex(vAf), 'BLUE');
+
+        // // Задняя грань.
+        // drawLine(projectVertex(vAb), projectVertex(vBb), 'RED');
+        // drawLine(projectVertex(vBb), projectVertex(vCb), 'RED');
+        // drawLine(projectVertex(vCb), projectVertex(vDb), 'RED');
+        // drawLine(projectVertex(vDb), projectVertex(vAb), 'RED');
+
+        // // Рёбра, соединяющие переднюю и заднюю грани.
+        // drawLine(projectVertex(vAf), projectVertex(vAb), 'GREEN');
+        // drawLine(projectVertex(vBf), projectVertex(vBb), 'GREEN');
+        // drawLine(projectVertex(vCf), projectVertex(vCb), 'GREEN');
+        // drawLine(projectVertex(vDf), projectVertex(vDb), 'GREEN');
+    }
+    else {
+        for (let tr of model.triangles) {
+            let f, s, t;
+            f = tr.vertexNums[0];
+            s = tr.vertexNums[1];
+            t = tr.vertexNums[2];
+
+            drawTriangle(projectVertex(model.vertexes[f]),
+                projectVertex(model.vertexes[s]),
+                projectVertex(model.vertexes[t]),
+                tr.color
+            );
+        }
+    }
+}
+
+function drawTriangle(f, s, t, color) {
+    context.beginPath();
+    context.fillStyle = color;
+    context.moveTo(f.x, f.y);
+    context.lineTo(s.x, s.y);
+    context.lineTo(t.x, t.y);
+    context.lineTo(f.x, f.y);
+    context.fill();
 }
