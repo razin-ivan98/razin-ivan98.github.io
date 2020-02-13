@@ -128,7 +128,7 @@ function canvasTouchMove(event) {
                         Math.pow(x - screen_arr[i][j].x, 2) + 
                         Math.pow(y - screen_arr[i][j].y, 2)) < 20)
                     {
-                        arr[i][j] += 0.5 * brush_d;
+                        arr[i][j] += 0.35 * brush_d;
                         recalc();
                     }
                 }
