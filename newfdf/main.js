@@ -1,4 +1,4 @@
-var size  = 51;
+var size  = 41;
 
 var brush_d = 0;
 
@@ -116,8 +116,10 @@ function canvasMouseMove(event) {
 }
 function canvasTouchMove(event) {
     if (brush_d != 0){
-        let x = event.changedTouches[0].clientX;
-        let y = event.changedTouches[0].clientY;
+        var rect = canvas.getBoundingClientRect();
+        let x = event.changedTouches[0].clientX - rect.left;
+        let y = event.changedTouches[0].clientY- rect.top;
+        
 
         if (is_rot){
             for (let i = 0; i < screen_arr.length; i++) {
