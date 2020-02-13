@@ -1,4 +1,4 @@
-var size  = 41;
+var size  = 31;
 
 var brush_d = 0;
 
@@ -116,11 +116,11 @@ function canvasMouseMove(event) {
 }
 function canvasTouchMove(event) {
     if (brush_d != 0){
-        var rect = canvas.getBoundingClientRect();
-        let x = event.changedTouches[0].clientX - rect.left;
-        let y = event.changedTouches[0].clientY- rect.top;
-        
+        //var rect = canvas.getBoundingClientRect();
 
+        let x = event.changedTouches[0].clientX;
+        let y = event.changedTouches[0].clientY;
+        
         if (is_rot){
             for (let i = 0; i < screen_arr.length; i++) {
                 for (let j = 0; j < screen_arr[0].length; j++) {
@@ -128,7 +128,7 @@ function canvasTouchMove(event) {
                         Math.pow(x - screen_arr[i][j].x, 2) + 
                         Math.pow(y - screen_arr[i][j].y, 2)) < 20)
                     {
-                        arr[i][j] += 0.1 * brush_d;
+                        arr[i][j] += 0.5 * brush_d;
                         recalc();
                     }
                 }
