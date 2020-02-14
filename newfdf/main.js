@@ -279,7 +279,7 @@ function redraw() {
 
 
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.beginPath();
+    // context.beginPath();
     //context.beginPath();
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr[0].length; j++) {
