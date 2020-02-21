@@ -300,5 +300,14 @@ input::placeholder{
 
 
 @media screen and (max-width: 700px){
-    
+    .price__list{
+        flex-wrap: wrap;
+    }
+
+    .container{
+        min-width: unset;
+    }
+    .services__list .list__item{
+        width: 100%;
+    }
 }

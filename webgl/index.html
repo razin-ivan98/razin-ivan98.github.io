@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>WebGL</title>
+
+    <script type="text/javascript" src="gl-matrix.js"></script>
+    <script src="webgl.js"></script>
+    <script type="nojs" id="fragmentShader">
+        precision mediump float;
+
+        varying vec4 vColor;
+
+        void main(void) {
+            gl_FragColor = vColor;
+        }
+    </script>
+    <script type="nojs" id="vertexShader">
+        attribute vec3 aVertexPosition;
+        attribute vec3 aVertexColor;
+
+        varying highp vec4 vColor;
+
+        uniform mat4 uMVMatrix;
+        uniform mat4 uPMatrix;
+
+        void main(void) {
+            gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+            vColor = vec4(aVertexColor, 1.0);
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>WebGL</h1>
+    </header>
+    <canvas height='500' width='500' id='canvas'>Обновите браузер</canvas>
+    <div class="buttons-container">
+
+    </div>
+
+    <p>version 0.1</p>
+</body>
+
+</html>

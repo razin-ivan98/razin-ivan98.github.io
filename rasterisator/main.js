@@ -262,18 +262,35 @@ function redraw() {
         // drawLine(projectVertex(vDf), projectVertex(vDb), 'GREEN');
     }
     else {
-        for (let tr of model.triangles) {
-            let f, s, t;
-            f = tr.vertexNums[0];
-            s = tr.vertexNums[1];
-            t = tr.vertexNums[2];
+        // for (let tr of model.triangles) {
 
-            drawTriangle(projectVertex(model.vertexes[f]),
-                projectVertex(model.vertexes[s]),
-                projectVertex(model.vertexes[t]),
-                tr.color
-            );
-        }
+
+
+        //     let f, s, t;
+        //     f = tr.vertexNums[0];
+        //     s = tr.vertexNums[1];
+        //     t = tr.vertexNums[2];
+
+        //     drawTriangle(projectVertex(model.vertexes[f]),
+        //         projectVertex(model.vertexes[s]),
+        //         projectVertex(model.vertexes[t]),
+        //         tr.color
+        //     );
+        // }
+
+        let f = [100, 200];
+        let s = [500, 500];
+        let t = [50, 400];
+
+        // context.beginPath();
+        // context.moveTo(f[0], f[1]);
+        // context.lineTo(s[0], s[1]);
+        // context.lineTo(t[0], t[1]);
+        // context.lineTo(f[0], f[1]);
+        // context.fill();
+
+
+
     }
 }
 
