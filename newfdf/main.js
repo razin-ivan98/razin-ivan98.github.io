@@ -1,4 +1,4 @@
-var size  = 31;
+var size = 31;
 
 var brush_d = 0;
 
@@ -25,14 +25,14 @@ var prevY = 0;
 var is_rot = 0;
 
 
-    var button_p;
-    var button_n;
+var button_p;
+var button_n;
 
-    var color_p;
-    var color_b;
+var color_p;
+var color_b;
 
 
-function color(col){
+function color(col) {
     button_n.className = '';
     button_p.className = '';
 
@@ -40,10 +40,10 @@ function color(col){
     color_p.className = '';
 
     brush_d = 0;
-    if (col === color_brush){
+    if (col === color_brush) {
         color_brush = '';
     }
-    else{
+    else {
         color_brush = col;
         if (col === 'brown')
             color_b.className = 'active';
@@ -53,7 +53,7 @@ function color(col){
     redraw();
 }
 
-function brush(dir){
+function brush(dir) {
 
     color_brush = '';
     button_n.className = '';
@@ -62,10 +62,10 @@ function brush(dir){
     color_b.className = '';
     color_p.className = '';
 
-    if (brush_d === dir){
+    if (brush_d === dir) {
         brush_d = 0;
     }
-    else{
+    else {
         brush_d = dir;
         if (dir === 1)
             button_p.className = 'active';
@@ -114,19 +114,18 @@ function canvasClick(event) {
 
 }
 function canvasMouseMove(event) {
-    if (color_brush !== ''){
+    if (color_brush !== '') {
         //var rect = canvas.getBoundingClientRect();
 
         let x = (event.offsetX === undefined) ? event.layerX : event.offsetX;
         let y = (event.offsetY === undefined) ? event.layerY : event.offsetY;
-        
-        if (is_rot){
+
+        if (is_rot) {
             for (let i = 0; i < screen_arr.length; i++) {
                 for (let j = 0; j < screen_arr[0].length; j++) {
                     if (Math.sqrt(
-                        Math.pow(x - screen_arr[i][j].x, 2) + 
-                        Math.pow(y - screen_arr[i][j].y, 2)) < 20)
-                    {
+                        Math.pow(x - screen_arr[i][j].x, 2) +
+                        Math.pow(y - screen_arr[i][j].y, 2)) < 20) {
                         color_arr[i][j] = color_brush;
                         recalc();
                     }
@@ -136,17 +135,16 @@ function canvasMouseMove(event) {
         redraw();
         printBrush(x, y);
     }
-    else if (brush_d != 0){
+    else if (brush_d != 0) {
         let x = (event.offsetX === undefined) ? event.layerX : event.offsetX;
         let y = (event.offsetY === undefined) ? event.layerY : event.offsetY;
 
-        if (is_rot){
+        if (is_rot) {
             for (let i = 0; i < screen_arr.length; i++) {
                 for (let j = 0; j < screen_arr[0].length; j++) {
                     if (Math.sqrt(
-                        Math.pow(x - screen_arr[i][j].x, 2) + 
-                        Math.pow(y - screen_arr[i][j].y, 2)) < 20)
-                    {
+                        Math.pow(x - screen_arr[i][j].x, 2) +
+                        Math.pow(y - screen_arr[i][j].y, 2)) < 20) {
                         arr[i][j] += 0.1 * brush_d;
                         recalc();
                     }
@@ -154,7 +152,7 @@ function canvasMouseMove(event) {
             }
         }
 
-        
+
         redraw();
         printBrush(x, y);
     }
@@ -172,19 +170,18 @@ function canvasMouseMove(event) {
     }
 }
 function canvasTouchMove(event) {
-    if (color_brush !== ''){
+    if (color_brush !== '') {
         //var rect = canvas.getBoundingClientRect();
 
         let x = event.changedTouches[0].clientX;
         let y = event.changedTouches[0].clientY;
-        
-        if (is_rot){
+
+        if (is_rot) {
             for (let i = 0; i < screen_arr.length; i++) {
                 for (let j = 0; j < screen_arr[0].length; j++) {
                     if (Math.sqrt(
-                        Math.pow(x - screen_arr[i][j].x, 2) + 
-                        Math.pow(y - screen_arr[i][j].y, 2)) < 20)
-                    {
+                        Math.pow(x - screen_arr[i][j].x, 2) +
+                        Math.pow(y - screen_arr[i][j].y, 2)) < 20) {
                         color_arr[i][j] = color_brush;
                         recalc();
                     }
@@ -194,19 +191,18 @@ function canvasTouchMove(event) {
         redraw();
         printBrush(x, y);
     }
-    else if (brush_d != 0){
+    else if (brush_d != 0) {
         //var rect = canvas.getBoundingClientRect();
 
         let x = event.changedTouches[0].clientX;
         let y = event.changedTouches[0].clientY;
-        
-        if (is_rot){
+
+        if (is_rot) {
             for (let i = 0; i < screen_arr.length; i++) {
                 for (let j = 0; j < screen_arr[0].length; j++) {
                     if (Math.sqrt(
-                        Math.pow(x - screen_arr[i][j].x, 2) + 
-                        Math.pow(y - screen_arr[i][j].y, 2)) < 20)
-                    {
+                        Math.pow(x - screen_arr[i][j].x, 2) +
+                        Math.pow(y - screen_arr[i][j].y, 2)) < 20) {
                         arr[i][j] += 0.35 * brush_d;
                         recalc();
                     }
@@ -244,15 +240,16 @@ window.onload = function () {
     }
 
 
-    for (var i = 0; i < size; i++){
+    for (var i = 0; i < size; i++) {
         arr[i] = [];
         color_arr[i] = [];
-        for (var j = 0; j < size; j++){
+        for (var j = 0; j < size; j++) {
             arr[i][j] = 0;
             color_arr[i][j] = 'green';
-    }}
+        }
+    }
     //console.log(mas);
-    
+
     color_p = document.getElementById('color_p');
     color_b = document.getElementById('color_b');
 
@@ -277,23 +274,24 @@ function redraw() {
 
 
     let grad;
+    let c;
 
-    
 
 
     context.clearRect(0, 0, canvas.width, canvas.height);
-    
+    // context.beginPath();
     //context.beginPath();
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr[0].length; j++) {
+            c = color_arr[i][j];
             first = screen_arr[i][j];
             if (i < arr.length - 1) {
                 second = screen_arr[i + 1][j];
                 context.beginPath();
-                grad = context.createLinearGradient(first.x, first.y, second.x, second.y);
-                grad.addColorStop(0, color_arr[i][j]);
-                grad.addColorStop(1, color_arr[i + 1][j]);
-                context.strokeStyle = grad;
+                // grad = context.createLinearGradient(first.x, first.y, second.x, second.y);
+                // grad.addColorStop(0, color_arr[i][j]);
+                // grad.addColorStop(1, color_arr[i + 1][j]);
+                context.strokeStyle = c;
                 context.moveTo(first.x, first.y);
                 context.lineTo(second.x, second.y);
                 context.stroke();
@@ -301,10 +299,10 @@ function redraw() {
             if (j < arr[0].length - 1) {
                 second = screen_arr[i][j + 1];
                 context.beginPath();
-                grad = context.createLinearGradient(first.x, first.y, second.x, second.y);
-                grad.addColorStop(0, color_arr[i][j]);
-                grad.addColorStop(1, color_arr[i][j + 1]);
-                context.strokeStyle = grad;
+                // grad = context.createLinearGradient(first.x, first.y, second.x, second.y);
+                // grad.addColorStop(0, color_arr[i][j]);
+                // grad.addColorStop(1, color_arr[i][j + 1]);
+                context.strokeStyle = c;
                 context.moveTo(first.x, first.y);
                 context.lineTo(second.x, second.y);
                 context.stroke();
@@ -323,7 +321,7 @@ function printSelected() {
     context.fill();
 }
 
-function printBrush(x, y){
+function printBrush(x, y) {
     context.beginPath();
     context.arc(x, y, 20, 0, 2 * Math.PI, false);
     if (brush_d === -1)
