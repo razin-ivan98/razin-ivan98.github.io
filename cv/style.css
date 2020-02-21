@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color: #67a4f4;
+
+}
+.container{
+    width: 80%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+.photo{
+    height: 30rem;
+    background-image: url('logo.jpg');
+    background-size: cover;
+    background-position: left center;
+}
