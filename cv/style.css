@@ -12,8 +12,38 @@ header{
     margin: 0 auto;
 }
 .photo{
-    height: 30rem;
+    height: 20rem;
+    width: 100%;
     background-image: url('logo.jpg');
     background-size: cover;
     background-position: left center;
+}
+.about_me{
+    widows: 50%;
+    height: 100%;
+    float: right;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media screen and (max-width: 600px){
+    .container{
+        width: 100%;
+        max-width: unset;
+    }
+    .photo{
+        height: 15rem;
+    }
+
+}
+@media screen and (min-width: 1400px){
+    .container{
+        width: 100%;
+        max-width: unset;
+    }
+    .photo{
+        height: 30rem;
+    }
 }
