@@ -56,6 +56,14 @@ function canvasTouchStart(event) {
 
 }
 function canvasTouchMove(event) {
+    if (event.changedTouches.length > 1) {
+        isRot = 0;
+        isMoveScale = 1
+    }
+    else if (event.changedTouches.length === 1) {
+        isRot = 1;
+        isMoveScale = 0;
+    }
     if (isRot === 1) {
         let x = event.changedTouches[0].clientX;
         let y = event.changedTouches[0].clientY;
