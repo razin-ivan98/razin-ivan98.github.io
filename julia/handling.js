@@ -56,18 +56,18 @@ function canvasTouchStart(event) {
 
 }
 function canvasTouchMove(event) {
-    document.getElementById('p').innerHTML += event.changedTouches.length;
-    if (event.changedTouches.length > 1) {
+    document.getElementById('p').innerHTML += event.targetTouches.length;
+    if (event.targetTouches.length > 1) {
         isRot = 0;
         isMoveScale = 1
     }
-    else if (event.changedTouches.length === 1) {
+    else if (event.targetTouches.length === 1) {
         isRot = 1;
         isMoveScale = 0;
     }
     if (isRot === 1) {
-        let x = event.changedTouches[0].clientX;
-        let y = event.changedTouches[0].clientY;
+        let x = event.targetTouches[0].clientX;
+        let y = event.targetTouches[0].clientY;
         let deltaX = x - prevX;
         let deltaY = y - prevY;
         cRe += -0.005 * deltaY / scale;
@@ -77,8 +77,8 @@ function canvasTouchMove(event) {
         prevY = y;
     }
     else if (isMoveScale === 1) {
-        let x = event.changedTouches[0].clientX;
-        let y = event.changedTouches[0].clientY;
+        let x = event.targetTouches[0].clientX;
+        let y = event.targetTouches[0].clientY;
         let deltaX = x - prevX;
         let deltaY = y - prevY;
         // let x2 = event.changedTouches[1].clientX;
