@@ -1,5 +1,6 @@
 
 function canvasMouseDown(event) {
+    event.preventDefault();
     if (event.which === 1)
         isMoveScale = 1;
     else if (event.which === 2)
@@ -14,6 +15,7 @@ function canvasMouseUp(event) {
     isMoveScale = 0;
 }
 function canvasMouseMove(event) {
+    event.preventDefault();
     let x = (event.offsetX === undefined) ? event.layerX : event.offsetX;
     let y = (event.offsetY === undefined) ? event.layerY : event.offsetY;
     let deltaX = x - prevX;

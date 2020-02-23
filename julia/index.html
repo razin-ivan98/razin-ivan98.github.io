@@ -14,7 +14,7 @@
 
     <script type="nojs" id="fragmentShaderText">#version 300 es
 
-            precision mediump float;
+            precision highp float;
     
 
             in vec3 hsv;
@@ -69,12 +69,11 @@
             }
 
             void main(void) {
-
-
                 fragColor = vec4(hsvToRgb(ivec3(hsv)), 1.0);
             }
     </script>
     <script type="nojs" id="vertexShaderText">#version 300 es
+            precision highp float;
 
             out vec3 hsv; 
             in vec3 aVertexPosition;
