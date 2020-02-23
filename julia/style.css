@@ -43,6 +43,7 @@ p{
     color: peru;
     font-family: 'Open Sans', sans-serif;
     margin-top: 2rem;
+    overflow-wrap: normal;
 }
 
 

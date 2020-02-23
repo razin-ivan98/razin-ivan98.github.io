@@ -56,7 +56,7 @@ function canvasTouchStart(event) {
 
 }
 function canvasTouchMove(event) {
-    alert(event.changedTouches.length);
+    document.getElementById('p').innerHTML += event.changedTouches.length;
     if (event.changedTouches.length > 1) {
         isRot = 0;
         isMoveScale = 1
