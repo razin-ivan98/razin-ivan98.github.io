@@ -12,7 +12,7 @@ var camera = {
     z: 0.0
 }
 
-var radius = 1.0;
+var radius = 0.8;
 var alpha = 0;
 var beta = 0;
 
