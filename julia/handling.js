@@ -63,7 +63,6 @@ function canvasTouchStart(event) {
 }
 function canvasTouchMove(event) {
     event.preventDefault();
-    document.getElementById('p').innerHTML += event.targetTouches.length;
     if (event.targetTouches.length > 1) {
         isRot = 0;
         isMoveScale = 1
@@ -85,20 +84,23 @@ function canvasTouchMove(event) {
         let y = event.targetTouches[0].clientY;
         let deltaX = x - prevX;
         let deltaY = y - prevY;
-        // let x2 = event.targetTouches[1].clientX;
-        // let y2 = event.targetTouches[1].clientY;
-        // let deltaX2 = x2 - prevX2;
-        // let deltaY2 = y2 - prevY2;
+
+        let x2 = event.targetTouches[1].clientX;
+        let y2 = event.targetTouches[1].clientY;
+        let deltaX2 = x2 - prevX2;
+        let deltaY2 = y2 - prevY2;
+
         prevX = x;
         prevY = y;
-        // prevX2 = x2;
-        // prevY2 = y2;
+
+        prevX2 = x2;
+        prevY2 = y2;
 
         delta[0] -= 0.008 * deltaX / scale;
         delta[1] += 0.008 * deltaY / scale;
 
-        // scale += 0.008 * Math.sqrt(pow(deltaX + deltaX2, 2) + pow(deltaY + deltaY2, 2));
-        // if (scale < 1)
-        //     scale = 1;
+        scale += 0.008 * Math.sqrt(pow(deltaX + deltaX2, 2) + pow(deltaY + deltaY2, 2));
+        if (scale < 1)
+            scale = 1;
     }
 }
