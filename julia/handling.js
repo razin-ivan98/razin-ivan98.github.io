@@ -87,21 +87,20 @@ function canvasTouchMove(event) {
 
         let x2 = event.targetTouches[1].clientX;
         let y2 = event.targetTouches[1].clientY;
-        let deltaX2 = x2 - prevX2;
-        let deltaY2 = y2 - prevY2;
+
+        delta[0] -= 0.008 * deltaX / scale;
+        delta[1] += 0.008 * deltaY / scale;
+
+        scale += 0.005 * scale * (Math.sqrt(Math.pow(x2 - x, 2) + Math.pow(y2 - y, 2)) -
+            Math.sqrt(Math.pow(prevX2 - prevX, 2) + Math.pow(prevY2 - prevY, 2)));
+        //   document.getElementById('p').innerHTML += scale + ' ';
+        if (scale < 1)
+            scale = 1;
 
         prevX = x;
         prevY = y;
 
         prevX2 = x2;
         prevY2 = y2;
-
-        delta[0] -= 0.008 * deltaX / scale;
-        delta[1] += 0.008 * deltaY / scale;
-
-        scale += 0.05 * Math.sqrt(Math.pow(deltaX + deltaX2, 2) + Math.pow(deltaY + deltaY2, 2));
-        //   document.getElementById('p').innerHTML += scale + ' ';
-        if (scale < 1)
-            scale = 1;
     }
 }
