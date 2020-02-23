@@ -110,7 +110,7 @@
                     ii = i;
                 }
 
-                ivec3 hsvColor = ivec3((290 + ii) % 256,
+                ivec3 hsvColor = ivec3((290 + ii%256) % 256,
                                         255,
                                         0);
                 if (ii < iterations)
