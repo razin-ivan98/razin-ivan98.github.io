@@ -39,19 +39,19 @@ function canvasMouseWheel(event) {
 }
 
 function canvasTouchStart(event) {
-    if (event.changedTouches.length === 1) {
-        isRot = 1;
-        prevX = event.changedTouches[0].clientX;
-        prevY = event.changedTouches[0].clientY;
-    }
-    else {
-        isMoveScale = 1;
-        prevX = event.changedTouches[0].clientX;
-        prevY = event.changedTouches[0].clientY;
-        prevX2 = event.changedTouches[1].clientX;
-        prevY2 = event.changedTouches[1].clientY;
+    //  if (event.changedTouches.length === 1) {
+    //    isRot = 1;
+    prevX = event.changedTouches[0].clientX;
+    prevY = event.changedTouches[0].clientY;
+    //  }
+    ///else {
+    //   isMoveScale = 1;
+    // prevX = event.changedTouches[0].clientX;
+    //prevY = event.changedTouches[0].clientY;
+    // prevX2 = event.changedTouches[1].clientX;
+    // prevY2 = event.changedTouches[1].clientY;
 
-    }
+    //}
 
 
 }
@@ -81,20 +81,20 @@ function canvasTouchMove(event) {
         let y = event.changedTouches[0].clientY;
         let deltaX = x - prevX;
         let deltaY = y - prevY;
-        let x2 = event.changedTouches[1].clientX;
-        let y2 = event.changedTouches[1].clientY;
-        let deltaX2 = x2 - prevX2;
-        let deltaY2 = y2 - prevY2;
+        // let x2 = event.changedTouches[1].clientX;
+        // let y2 = event.changedTouches[1].clientY;
+        // let deltaX2 = x2 - prevX2;
+        // let deltaY2 = y2 - prevY2;
         prevX = x;
         prevY = y;
-        prevX2 = x2;
-        prevY2 = y2;
+        // prevX2 = x2;
+        // prevY2 = y2;
 
         delta[0] -= 0.008 * deltaX / scale;
         delta[1] += 0.008 * deltaY / scale;
 
-        scale += 0.008 * Math.sqrt(pow(deltaX + deltaX2, 2) + pow(deltaY + deltaY2, 2));
-        if (scale < 1)
-            scale = 1;
+        scale += 0.008 * Math.sqrt(pow(deltaX, 2) + pow(deltaY, 2));
+        // if (scale < 1)
+        //     scale = 1;
     }
 }
