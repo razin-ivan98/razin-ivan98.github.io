@@ -99,7 +99,8 @@ function canvasTouchMove(event) {
         delta[0] -= 0.008 * deltaX / scale;
         delta[1] += 0.008 * deltaY / scale;
 
-        scale += 0.008 * Math.sqrt(pow(deltaX + deltaX2, 2) + pow(deltaY + deltaY2, 2));
+        scale += Math.sqrt(pow(deltaX + deltaX2, 2) + pow(deltaY + deltaY2, 2));
+        document.getElementById('p').innerHTML += scale + ' ';
         if (scale < 1)
             scale = 1;
     }

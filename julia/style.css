@@ -44,6 +44,7 @@ p{
     font-family: 'Open Sans', sans-serif;
     margin-top: 2rem;
     overflow-wrap: normal;
+    word-wrap: normal;
 }
 
 
