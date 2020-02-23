@@ -85,6 +85,10 @@ function canvasTouchMove(event) {
         let y2 = event.changedTouches[1].clientY;
         let deltaX2 = x2 - prevX2;
         let deltaY2 = y2 - prevY2;
+        prevX = x;
+        prevY = y;
+        prevX2 = x2;
+        prevY2 = y2;
 
         delta[0] -= 0.008 * deltaX / scale;
         delta[1] += 0.008 * deltaY / scale;
