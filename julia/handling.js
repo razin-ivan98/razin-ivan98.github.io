@@ -39,6 +39,7 @@ function canvasMouseWheel(event) {
 }
 
 function canvasTouchStart(event) {
+    event.preventDefault();
     //  if (event.changedTouches.length === 1) {
     //    isRot = 1;
     prevX = event.targetTouches[0].clientX;
@@ -61,15 +62,13 @@ function canvasTouchStart(event) {
 
 }
 function canvasTouchMove(event) {
+    event.preventDefault();
     document.getElementById('p').innerHTML += event.targetTouches.length;
     if (event.targetTouches.length > 1) {
         isRot = 0;
         isMoveScale = 1
     }
-    else if (event.targetTouches.length === 1) {
-        isRot = 1;
-        isMoveScale = 0;
-    }
+
     if (isRot === 1) {
         let x = event.targetTouches[0].clientX;
         let y = event.targetTouches[0].clientY;
