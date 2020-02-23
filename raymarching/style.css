@@ -33,7 +33,7 @@ button{
     color: #fff;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 2rem;
     text-transform: uppercase;
 }
 
@@ -42,4 +42,9 @@ p{
     color: peru;
     font-family: 'Open Sans', sans-serif;
     margin-top: 2rem;
+}
+
+
+.active{
+    background-color: peru;
 }

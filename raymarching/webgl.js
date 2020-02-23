@@ -6,8 +6,30 @@ var shaderProgram;
 var vertexBuffer;
 
 var power = 8.0;
+var camera = {
+    x: -2.5,
+    y: 0.0,
+    z: 0.0
+}
+
+var radius = 1.0;
+var alpha = 0;
+var beta = 0;
+
 var powerLoc;
+var cameraLoc;
+var radiusLoc;
 var vertices = [];
+
+
+var prevX;
+var prevY;
+
+var isRot = 0;
+
+var autoRot = 0;
+
+var mvMatrix = glMatrix.mat4.create();
 
 function initProgram() {
     shaderProgram = gl.createProgram();
@@ -69,20 +91,45 @@ function initBuffers() {
         false,
         0, 0);
     powerLoc = gl.getUniformLocation(shaderProgram, 'u_power');
+    cameraLoc = gl.getUniformLocation(shaderProgram, 'u_camera');
+    radiusLoc = gl.getUniformLocation(shaderProgram, 'u_radius');
+    shaderProgram.MVMatrix = gl.getUniformLocation(shaderProgram, "u_MVMatrix");
+
 }
 
 function draw() {
 
     gl.uniform1f(powerLoc, power);
 
+    glMatrix.mat4.rotate(mvMatrix, mvMatrix, beta, [0, 0, 1]);
+    glMatrix.mat4.rotate(mvMatrix, mvMatrix, alpha, [0, 1, 0]);
+    gl.uniformMatrix4fv(shaderProgram.MVMatrix, false, mvMatrix);
+
+    gl.uniform3fv(cameraLoc, [camera.x, camera.y, camera.z]);
+    gl.uniform1f(radiusLoc, radius);
+    if (autoRot === 0) {
+        alpha = 0;
+        beta = 0;
+    }
     gl.clearColor(0.0, 0.0, 0.0, 0.0);
     gl.clear(gl.COLOR_BUFFER_BIT || gl.DEPTH_BUFFER_BIT);
     gl.drawArrays(gl.POINTS, 0, vertices.length / 2);
     requestAnimationFrame(draw);
 }
 
+
+
+
 window.onload = function () {
     let canvas = document.getElementById('canvas');
+
+    canvas.onmousedown = canvasMouseDown;
+    canvas.onmouseup = canvasMouseUp;
+    canvas.onmousemove = canvasMouseMove;
+
+    canvas.ontouchstart = this.canvasTouchStart;
+    canvas.ontouchmove = this.canvasTouchMove;
+    canvas.ontouchend = canvasMouseUp;
 
     try {
         gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
@@ -108,3 +155,5 @@ window.onload = function () {
         draw();
     }
 }
+
+

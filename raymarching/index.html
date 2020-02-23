@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ray Marching</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="gl-matrix.js"></script>
     <script src="webgl.js"></script>
+    <script src="handling.js"></script>
+
 
     <script type="nojs" id="fragmentShaderText">
             precision mediump float;
@@ -21,7 +24,9 @@
     <script type="nojs" id="vertexShaderText">
             attribute vec3 aVertexPosition;
 
-            const vec3 CAMERA_ORIGIN = vec3(-4.0, -0.0, -0.0);
+            uniform vec3 u_camera;
+            uniform mat4 u_MVMatrix;
+            uniform float u_radius;
 
             varying float v_depth;
 
@@ -30,12 +35,13 @@
             uniform float u_power;
 
             float getSDF_s(vec3 from) {
-                return length(from) - 0.1;
+                return length(from) - 0.5;
             }
 
             float getSDF(vec3 point) {
                 // initialisation
                 vec3 z = vec3(point);
+                
                 float dr = 1.0; // running derivative
                 float r = 0.0; // escape time length
                 // iteration
@@ -45,6 +51,7 @@
                         break;
                     }
                     // conversion to polar coordinates
+                    
                     float theta = acos(z.z / r);
                     float phi = atan(z.y, z.x);
                     dr = pow(r, u_power - 1.0) * u_power * dr + 1.0;
@@ -55,6 +62,7 @@
                     // conversion back to cartesian coordinates
                     z = vec3(sin(theta) * cos(phi), sin(theta) * sin(phi), cos(theta));
                     z = z * zr + point;
+                   
                 }
                 // distance estimator
                 return (0.5 * log(r) * r / dr);
@@ -62,7 +70,7 @@
 
             float rayMarch(vec3 from, vec3 to) {
                 float totalDistance = 0.0;
-                vec3 direction = normalize(to - from);
+                vec3 direction = to;//normalize(to - from);
                 int step = 0;
                 for (int steps = 0; steps < 50; steps++) {
                     vec3 scaledDirection = direction * totalDistance;
@@ -77,22 +85,25 @@
                 return (1.0 - float(step) / 50.0);
             }
         
-            // put camera origin in the middle of image
-            vec2 getCameraOrigin() {
-                return (vec2(0.0, 0.0));
-            }
+
         
             // for finding the ray marching vector
             vec3 convertPixelToWorld(vec2 p) {
-                float x2 = (p.x) * 1.5;
-                float x3 = (-p.y) * 1.5;
-                return (vec3(0.0, x2, x3));
+                float x2 = (p.x) / 1.5;
+                float x3 = (-p.y) / 1.5;
+                return (vec3(1.0, x2, x3));
             }
             void getColor(void){
-                v_depth = float(rayMarch(CAMERA_ORIGIN, convertPixelToWorld(vec2(aVertexPosition))));
+               // vec3 dir = vec3(u_MVMatrix * vec4(convertPixelToWorld(vec2(aVertexPosition)), 1.0));
+                vec3 dir = convertPixelToWorld(vec2(aVertexPosition));
+                dir = vec3(u_MVMatrix * vec4(dir, 1.0));
+                vec3 newCamera = vec3((u_MVMatrix * vec4(u_camera, 1.0)) * u_radius);
+                v_depth = rayMarch(newCamera, dir);
             }
             void main(void) {
                 gl_Position = vec4(aVertexPosition, 1.0);
+               
+
                 getColor();
                 gl_PointSize = 1.0;
             }
@@ -107,6 +118,14 @@
     <div class="buttons-container">
         <input type="range" min="1" max="25" value="8" step="0.1" oninput="power = this.value;">
     </div>
+    <div class="buttons-container">
+
+        <input type="range" min="0.1" max="1" value="1" step="0.02" oninput="radius = this.value;">
+    </div>
+    <div class="buttons-container">
+        <button id='btn' onclick="autoRotHandle();">Auto</button>
+    </div>
+
 
     <p>version 1.0</p>
 
