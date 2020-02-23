@@ -24,6 +24,7 @@
                 ivec3 rgb;
                 int region, remainder, p, q, t;
 
+                hsv = ivec3(hsv.x % 256, hsv.y % 256, hsv.z % 256);
                 if (hsv.y == 0)
                 {
                     rgb.x = hsv.z;
@@ -137,7 +138,7 @@
 
 
 
-    <p>version 1.85</p>
+    <p>version 1.87</p>
     <p id='p'></p>
 
 
