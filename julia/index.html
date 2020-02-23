@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julia Fractal</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="gl-matrix.js"></script>
+    <script src="webgl.js"></script>
+    <script src="handling.js"></script>
+
+
+    <script type="nojs" id="fragmentShaderText">#version 300 es
+
+            precision mediump float;
+    
+
+            in vec3 hsv;
+            out vec4 fragColor;
+
+            vec3 hsvToRgb(ivec3 hsv)
+            {
+                ivec3 rgb;
+                int region, remainder, p, q, t;
+
+                if (hsv.y == 0)
+                {
+                    rgb.x = hsv.z;
+                    rgb.y = hsv.z;
+                    rgb.z = hsv.z;
+                    return (vec3(rgb));
+                }
+
+                region = hsv.x / 43;
+                remainder = (hsv.x - region * 43) * 6;
+
+                p = (hsv.z * (255 - hsv.y)) >> 8;
+                q = (hsv.z * (255 - ((hsv.y * remainder) >> 8))) >> 8;
+                t = (hsv.z * (255 - ((hsv.y * (255 - remainder)) >> 8))) >> 8;
+
+                if (region == 0)
+                {
+                    rgb.x = hsv.z; rgb.y = t; rgb.z = p;
+                }
+                else if (region == 1)
+                {
+                    rgb.x = q; rgb.y = hsv.z; rgb.z = p;
+                }
+                else if (region == 2)
+                {
+                    rgb.x = p; rgb.y = hsv.z; rgb.z = t;
+                }
+                else if (region == 3)
+                {
+                    rgb.x = p; rgb.y = q; rgb.z = hsv.z;
+                }
+                else if (region == 4)
+                {
+                    rgb.x = t; rgb.y = p; rgb.z = hsv.z;
+                }
+                else
+                {
+                    rgb.x = hsv.z; rgb.y = p; rgb.z = q;
+                }
+                return (vec3(rgb) / 256.0);
+            }
+
+            void main(void) {
+
+
+                fragColor = vec4(hsvToRgb(ivec3(hsv)), 1.0);
+            }
+    </script>
+    <script type="nojs" id="vertexShaderText">#version 300 es
+
+            out vec3 hsv; 
+            in vec3 aVertexPosition;
+
+            uniform float u_cRe;
+            uniform float u_cIm;
+            uniform float u_iter;
+            uniform vec2 u_delta;
+            uniform float u_scale;
+            
+
+            void getColor(void) {
+
+                float newRe;
+                float newIm;
+
+                float oldRe;
+                float oldIm;
+
+                int iterations = int(u_iter);
+
+                newRe = aVertexPosition.x / (0.6 * u_scale)+ u_delta.x;
+                newIm = aVertexPosition.y / (0.6 * u_scale) + u_delta.y;
+
+                int ii = 0;
+                for (int i = 0; i < iterations; i++){
+                    oldRe = newRe;
+                    oldIm = newIm;
+
+                    newRe = oldRe * oldRe - oldIm * oldIm + u_cRe;
+                    newIm = 2.0 * oldRe * oldIm + u_cIm;
+                    if ((newRe * newRe + newIm * newIm) > 4.0)
+                        break;
+                    ii = i;
+                }
+
+                ivec3 hsvColor = ivec3((290 + ii) % 256,
+                                        255,
+                                        0);
+                if (ii < iterations)
+                    hsvColor.z = 255;
+                hsv = vec3(hsvColor);
+            }
+
+            void main(void) {
+                gl_Position = vec4(aVertexPosition, 1.0);
+
+                getColor();
+                gl_PointSize = 1.0;
+            }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Julia Fractal</h1>
+    </header>
+    <canvas height='500' width='500' id='canvas'>Обновите браузер</canvas>
+    <div class="buttons-container">
+        <input type="range" min="10" max="1000" value="50" step="1" oninput="iterations = this.value;">
+    </div>
+
+
+
+    <p>version 1.0</p>
+
+
+</body>
+
+</html>
