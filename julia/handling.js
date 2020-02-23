@@ -41,7 +41,7 @@ function canvasMouseWheel(event) {
 function canvasTouchStart(event) {
     event.preventDefault();
     //  if (event.changedTouches.length === 1) {
-    //    isRot = 1;
+    isRot = 1;
     prevX = event.targetTouches[0].clientX;
     prevY = event.targetTouches[0].clientY;
 
