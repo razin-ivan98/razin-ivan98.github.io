@@ -64,7 +64,7 @@
                 {
                     rgb.x = hsv.z; rgb.y = p; rgb.z = q;
                 }
-                return (vec3(rgb) / 256.0);
+                return (vec3(rgb.x % 256, rgb.y % 256, rgb.z % 256) / 256.0);
             }
 
             void main(void) {
@@ -138,7 +138,7 @@
 
 
 
-    <p id='p'>version 1.47</p>
+    <p id='p'>version 1.52</p>
 
 
 </body>
