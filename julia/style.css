@@ -20,6 +20,7 @@ header{
 }
 body{
     background-color: #000;
+    overflow: hidden;
 }
 
 .buttons-container{
