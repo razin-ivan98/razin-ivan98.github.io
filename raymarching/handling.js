@@ -74,8 +74,8 @@ function canvasTouchMove(event) {
 
         let x2 = event.targetTouches[1].clientX;
         let y2 = event.targetTouches[1].clientY;
-
-        radius += 0.5(Math.sqrt(Math.pow(x2 - x, 2) + Math.pow(y2 - y, 2)) -
+        document.getElementById('p').innerHTML += 'begin ';
+        radius += 0.5 * (Math.sqrt(Math.pow(x2 - x, 2) + Math.pow(y2 - y, 2)) -
             Math.sqrt(Math.pow(prevX2 - prevX, 2) + Math.pow(prevY2 - prevY, 2)));
         document.getElementById('p').innerHTML += radius + ' ';
 
