@@ -139,10 +139,10 @@ window.onload = function () {
     canvas.ontouchend = canvasMouseUp;
 
     try {
-        gl = canvas.getContext('webgl2') || canvas.getContext('experimental-webgl2');
+        gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
     }
     catch (e) {
-        alert('Ваш браузер не поддерживает WebGL. Сори бря');
+
     }
 
     if (gl) {
@@ -161,6 +161,8 @@ window.onload = function () {
 
         draw();
     }
+    else
+        alert('Ваш браузер не поддерживает WebGL. Сори бря');
 }
 
 
