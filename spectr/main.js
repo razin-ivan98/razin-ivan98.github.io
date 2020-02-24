@@ -67,7 +67,6 @@ function getColor(percent) {
         rgb[incrementBase(base)] = Math.round(255 * percent);
     else
         rgb[decrementBase(base)] = Math.round(255 * (1.0 - percent));
-    //return ('rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')');
     return (rgb);
 }
 

@@ -150,7 +150,7 @@ window.onload = function () {
         gl = canvas.getContext('webgl2') || canvas.getContext('experimental-webgl2');
     }
     catch (e) {
-        alert('Ваш браузер не поддерживает WebGL. Сори бря');
+
     }
 
     if (gl) {
@@ -168,6 +168,8 @@ window.onload = function () {
         initBuffers();
 
         draw();
+    } else {
+        alert('К сожалению, Ваш браузер не поддерживает WebGL.');
     }
 }
 
