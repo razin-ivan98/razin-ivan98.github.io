@@ -62,8 +62,8 @@ function canvasTouchMove(event) {
         let y = event.changedTouches[0].clientY;
         let deltaX = x - prevX;
         let deltaY = y - prevY;
-        alpha = -0.005 * deltaY;
-        beta = 0.005 * deltaX;
+        alpha = -0.01 * deltaY;
+        beta = 0.01 * deltaX;
 
         prevX = x;
         prevY = y;
@@ -71,15 +71,14 @@ function canvasTouchMove(event) {
     else if (isScale === 1) {
         let x = event.targetTouches[0].clientX;
         let y = event.targetTouches[0].clientY;
-        let deltaX = x - prevX;
-        let deltaY = y - prevY;
 
         let x2 = event.targetTouches[1].clientX;
         let y2 = event.targetTouches[1].clientY;
 
-        radius += 0.005(Math.sqrt(Math.pow(x2 - x, 2) + Math.pow(y2 - y, 2)) -
+        radius += 0.5(Math.sqrt(Math.pow(x2 - x, 2) + Math.pow(y2 - y, 2)) -
             Math.sqrt(Math.pow(prevX2 - prevX, 2) + Math.pow(prevY2 - prevY, 2)));
-        //   document.getElementById('p').innerHTML += scale + ' ';
+        document.getElementById('p').innerHTML += radius + ' ';
+
         if (radius > 1)
             radius = 1;
         if (radius < 0.1)
