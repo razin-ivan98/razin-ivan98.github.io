@@ -16,7 +16,7 @@ var radius = 0.8;
 var alpha = 0;
 var beta = 0;
 
-var minDist = 0.001;
+var minDist = 0.005;
 var maxSteps = 50;
 
 var powerLoc;
@@ -30,8 +30,11 @@ var vertices = [];
 
 var prevX;
 var prevY;
+var prevX2;
+var prevY2;
 
 var isRot = 0;
+var isScale = 0;
 
 var autoRot = 0;
 
@@ -140,6 +143,8 @@ window.onload = function () {
     canvas.ontouchstart = this.canvasTouchStart;
     canvas.ontouchmove = this.canvasTouchMove;
     canvas.ontouchend = canvasMouseUp;
+
+    canvas.onmousewheel = this.canvasMouseWheel;
 
     try {
         gl = canvas.getContext('webgl2') || canvas.getContext('experimental-webgl2');
