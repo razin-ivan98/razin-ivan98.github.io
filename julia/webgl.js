@@ -103,7 +103,7 @@ function draw() {
 
     gl.uniform1f(cReLoc, cRe);
     gl.uniform1f(cImLoc, cIm);
-    gl.uniform1f(iterationsLoc, iterations);
+    gl.uniform1i(iterationsLoc, iterations);
     gl.uniform2fv(deltaLoc, delta);
     gl.uniform1f(scaleLoc, scale);
 

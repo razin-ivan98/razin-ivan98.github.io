@@ -11,13 +11,11 @@
     <script src="handling.js"></script>
 
 
-    <script type="nojs" id="fragmentShaderText">#version 300 es
+    <script type="nojs" id="fragmentShaderText">
 
             precision highp float;    
 
-            in vec3 hsv;
-            in float percent;
-            out vec4 fragColor;
+            varying float percent;
 
             int incrementBase(int base) {
                 if (base < 2)
@@ -40,43 +38,64 @@
 
                 float new_percent = percent;
             
-                int base;
                 int phase;
+
+                int curr_base;
                 if (new_percent < c1_3) {
-                    base = 1;
+                    phase = (new_percent < c1_6 ? 0 : 1);
+                    new_percent -= (c1_6 * float(phase));
+                    new_percent = new_percent / c1_6;
+
+                    rgb[1] = 1.0;
+
+                    if (phase == 1)
+                        rgb[2] = new_percent;
+                    else
+                        rgb[0] = 1.0 - new_percent;
                 } else if (new_percent < c2_3) {
-                    base = 2;
                     new_percent -= c1_3;
+
+                    phase = (new_percent < c1_6 ? 0 : 1);
+                    new_percent -= (c1_6 * float(phase));
+                    new_percent = new_percent / c1_6;
+
+                    rgb[2] = 1.0;
+
+                    if (phase == 1)
+                        rgb[0] = new_percent;
+                    else
+                        rgb[1] = 1.0 - new_percent;
                 } else {
-                    base = 0;
                     new_percent -= c2_3;
+
+                    phase = (new_percent < c1_6 ? 0 : 1);
+                    new_percent -= (c1_6 * float(phase));
+                    new_percent = new_percent / c1_6;
+
+                    rgb[0] = 1.0;
+
+                    if (phase == 1)
+                        rgb[1] = new_percent;
+                    else
+                        rgb[2] = 1.0 - new_percent;
                 }
-                phase = (new_percent < c1_6 ? 0 : 1);
-                new_percent -= (c1_6 * float(phase));
-                new_percent = new_percent / c1_6;
-            
-                rgb[base] = 1.0;
-                if (phase == 1)
-                    rgb[incrementBase(base)] = new_percent;
-                else
-                    rgb[decrementBase(base)] = 1.0 - new_percent;
+ 
                 return (rgb);
             }
 
             void main(void) {
-                fragColor = vec4(getColor(), 1.0);
+                gl_FragColor = vec4(getColor(), 1.0);
             }
     </script>
-    <script type="nojs" id="vertexShaderText">#version 300 es
+    <script type="nojs" id="vertexShaderText">
             precision highp float;
 
-            out vec3 hsv; 
-            out float percent;
-            in vec3 aVertexPosition;
+            varying float percent;
+            attribute vec3 aVertexPosition;
 
             uniform float u_cRe;
             uniform float u_cIm;
-            uniform float u_iter;
+            uniform int u_iter;
             uniform vec2 u_delta;
             uniform float u_scale;
             
@@ -89,13 +108,12 @@
                 float oldRe;
                 float oldIm;
 
-                int iterations = int(u_iter);
 
                 newRe = aVertexPosition.x / (0.6 * u_scale)+ u_delta.x;
                 newIm = aVertexPosition.y / (0.6 * u_scale) + u_delta.y;
 
-                int i = 0;
-                for (i = 0; i < iterations; i++){
+                int ii = 0;
+                for (int i = 0; i < 100000; i++){
                     oldRe = newRe;
                     oldIm = newIm;
 
@@ -103,16 +121,12 @@
                     newIm = 2.0 * oldRe * oldIm + u_cIm;
                     if ((newRe * newRe + newIm * newIm) > 4.0)
                         break;
-                    //ii = i;
+                    ii = i;
+                    if (ii > u_iter)
+                        break;
                 }
 
-                ivec3 Color = ivec3((i * 2) % 256,
-                                        (i * 3) % 256,
-                                        (i * 0) % 256);
-
-                hsv = vec3(Color);
-
-                percent = float(i) / float(iterations);
+                percent = float(ii) / float(u_iter);
             }
 
             void main(void) {
@@ -135,8 +149,7 @@
 
 
 
-    <p>version 1.87</p>
-    <p id='p'></p>
+    <p>version 2.3</p>
 
 
 </body>
