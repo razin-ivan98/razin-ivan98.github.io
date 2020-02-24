@@ -37,8 +37,8 @@ function canvasTouchMove(event) {
         let y = event.changedTouches[0].clientY;
         let deltaX = x - prevX;
         let deltaY = y - prevY;
-        alpha = -0.005 * deltaY;
-        beta = 0.005 * deltaX;
+        alpha = -0.05 * deltaY;
+        beta = 0.05 * deltaX;
 
         prevX = x;
         prevY = y;

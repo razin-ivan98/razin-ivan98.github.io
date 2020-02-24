@@ -16,9 +16,15 @@ var radius = 0.8;
 var alpha = 0;
 var beta = 0;
 
+var minDist = 0.001;
+var maxSteps = 50;
+
 var powerLoc;
 var cameraLoc;
 var radiusLoc;
+var minDistLoc;
+var maxStepsLoc;
+
 var vertices = [];
 
 
@@ -93,6 +99,8 @@ function initBuffers() {
     powerLoc = gl.getUniformLocation(shaderProgram, 'u_power');
     cameraLoc = gl.getUniformLocation(shaderProgram, 'u_camera');
     radiusLoc = gl.getUniformLocation(shaderProgram, 'u_radius');
+    minDistLoc = gl.getUniformLocation(shaderProgram, 'u_minDist');
+    maxStepsLoc = gl.getUniformLocation(shaderProgram, 'u_maxSteps');
     shaderProgram.MVMatrix = gl.getUniformLocation(shaderProgram, "u_MVMatrix");
 
 }
@@ -107,6 +115,8 @@ function draw() {
 
     gl.uniform3fv(cameraLoc, [camera.x, camera.y, camera.z]);
     gl.uniform1f(radiusLoc, radius);
+    gl.uniform1f(minDistLoc, minDist);
+    gl.uniform1i(maxStepsLoc, maxSteps);
     if (autoRot === 0) {
         alpha = 0;
         beta = 0;
@@ -132,7 +142,7 @@ window.onload = function () {
     canvas.ontouchend = canvasMouseUp;
 
     try {
-        gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        gl = canvas.getContext('webgl2') || canvas.getContext('experimental-webgl2');
     }
     catch (e) {
         alert('Ваш браузер не поддерживает WebGL. Сори бря');
