@@ -147,6 +147,7 @@ window.onload = function () {
     canvas.onmousewheel = this.canvasMouseWheel;
 
     try {
+        //  gl = canvas.getContext('webgl2') || canvas.getContext('experimental-webgl2');
         gl = canvas.getContext('webgl2') || canvas.getContext('experimental-webgl2');
     }
     catch (e) {
