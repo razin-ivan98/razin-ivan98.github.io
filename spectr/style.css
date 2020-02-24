@@ -45,6 +45,13 @@ p{
     margin-top: 2rem;
 }
 
+#rgb, #html-code{
+    text-align: center;
+    color: peru;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
 
 .active{
     background-color: peru;
