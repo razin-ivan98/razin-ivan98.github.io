@@ -112,14 +112,15 @@ window.onload = function () {
         let deltaY = y - center_y;
         if (y > 20 && y < 80) {
             percent = x / width;
-
+            selectedRgb = getColor(percent);
 
         }
         else if (Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)) < radius) {
             let angle = Math.atan2(deltaX, deltaY) + Math.PI;
             percent = angle / 2 / Math.PI;
+            selectedRgb = getColor(percent);
         }
-        selectedRgb = getColor(percent);
+
         context.fillStyle = toCssRgb(selectedRgb);
         context.fillRect(0, width / 20 * 17, width, width / 10);
 
