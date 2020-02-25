@@ -51,7 +51,7 @@ function main() {
     // canvas.height = height;
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    gl.enable(gl.CULL_FACE);
+   // gl.enable(gl.CULL_FACE);
     gl.enable(gl.DEPTH_TEST);
 
 
@@ -84,7 +84,7 @@ function render(time) {
 
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    gl.enable(gl.CULL_FACE);
+   // gl.enable(gl.CULL_FACE);
     gl.enable(gl.DEPTH_TEST);
     gl.clearColor(0, 0, 0, 0.0);
 
@@ -103,8 +103,8 @@ function render(time) {
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
     gl.vertexAttribPointer(positionLoc, 3, gl.FLOAT, false, 0, 0);
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-    gl.vertexAttribPointer(colorLoc, 3, gl.FLOAT, false, 0, 0);
+   // gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+   // gl.vertexAttribPointer(colorLoc, 3, gl.FLOAT, false, 0, 0);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
     gl.vertexAttribPointer(normalLoc, 3, gl.FLOAT, false, 0, 0);
@@ -112,7 +112,7 @@ function render(time) {
     //  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, vertexIndexBuffer);
 
     //  gl.drawElements(gl.TRIANGLES, indexData.length, gl.UNSIGNED_SHORT, 0);
-    gl.drawArrays(gl.TRIANGLES, 0, vertexData.length);
+    gl.drawArrays(gl.TRIANGLES, 0, vertexData.length / 3);
 
     requestAnimationFrame(render);
 
@@ -123,7 +123,7 @@ function initMatrixes() {
     var aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
     var near = 0.1;
     var far = -10;
-    var radius = 40;
+    var radius = 60;
     var up = [0, 1, 0];
     var time_old = 0;
 
@@ -150,13 +150,13 @@ function initBuffers() {
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexData), gl.STATIC_DRAW);
 
-    colorBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-    gl.bufferData(
-        gl.ARRAY_BUFFER,
-        new Float32Array(colorData),
-        gl.STATIC_DRAW
-    );
+   // colorBuffer = gl.createBuffer();
+   // gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+    // gl.bufferData(
+    //     gl.ARRAY_BUFFER,
+    //     new Float32Array(colorData),
+    //     gl.STATIC_DRAW
+    // );
 
     // vertexIndexBuffer = gl.createBuffer();
     //gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, vertexIndexBuffer);
@@ -170,11 +170,11 @@ function initBuffers() {
 }
 
 function setAttrubutes() {
-    colorLoc = gl.getAttribLocation(program, 'color');
+  //  colorLoc = gl.getAttribLocation(program, 'color');
     positionLoc = gl.getAttribLocation(program, 'position');
     normalLoc = gl.getAttribLocation(program, 'normal');
     u_matrixLoc = gl.getUniformLocation(program, 'u_matrix');
-    gl.enableVertexAttribArray(colorLoc);
+  //  gl.enableVertexAttribArray(colorLoc);
     gl.enableVertexAttribArray(positionLoc);
     gl.enableVertexAttribArray(normalLoc);
 
