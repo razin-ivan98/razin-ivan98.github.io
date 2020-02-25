@@ -1,5 +1,6 @@
 var tmpVertex = [];
 var tmpNormal = [];
+var tmpTex = [];
 
 
 function getVTN(str) {
@@ -11,8 +12,13 @@ function getVTN(str) {
     vertexData.push(tmpVertex[index + 1]);
     vertexData.push(tmpVertex[index + 2]);
 
-    index = (Number.parseInt(str[2]) - 1) * 3;
+    index = (Number.parseInt(str[1]) - 1) * 2;
     // console.log(index);
+    texData.push(tmpTex[index]);
+    texData.push(tmpTex[index + 1]);
+
+    index = (Number.parseInt(str[2]) - 1) * 3;
+     
     normalData.push(tmpNormal[index]);
     normalData.push(tmpNormal[index + 1]);
     normalData.push(tmpNormal[index + 2]);
@@ -86,7 +92,7 @@ function getVTNforTr(str){
 
 function parseObj(input) {
     vertexData = [];
-    indexeData = [];
+    texData = [];
 
 
     normalsData = [];
@@ -111,6 +117,10 @@ function parseObj(input) {
             tmpNormal.push(Number.parseFloat(str[3]));
 
         }
+        else if (str[0] === 'vt') {
+            tmpTex.push(Number.parseFloat(str[1]));
+            tmpTex.push(Number.parseFloat(str[2]));
+        }
 
     }
     for (let i = 0; i < strings.length; i++) {
@@ -132,5 +142,5 @@ function parseObj(input) {
     }
    // console.log(vertexData);
   //  console.log(normalData);
-
+  console.log(texData);
 } 

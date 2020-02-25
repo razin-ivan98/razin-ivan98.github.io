@@ -133,3 +133,4 @@ var indexData = [
     // 20, 21, 22, 20, 22, 23  // Left face
 ];
 var normalData = [];
+var texData = [];

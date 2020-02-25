@@ -6,17 +6,20 @@ var fragmentShader;
 
 var drag = false;
 var old_x, old_y;
-var dX = 0, dY = 0;
+var dX = -0.5, dY = -1.2;
 
-var colorLoc;
+// var colorLoc;
 var positionLoc;
 var normalLoc;
+var texLoc;
 var u_matrixLoc;
 
 var vertexBuffer;
-var colorBuffer
+var texBuffer;
 var normalBuffer;
-var vertexIndexBuffer;
+// var vertexIndexBuffer;
+
+var texture;
 // var THETA = 0;
 // var PHI = 0;
 
@@ -109,7 +112,13 @@ function render(time) {
     gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
     gl.vertexAttribPointer(normalLoc, 3, gl.FLOAT, false, 0, 0);
 
+    gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
+    gl.vertexAttribPointer(texLoc, 2, gl.FLOAT, false, 0, 0);
+
     //  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, vertexIndexBuffer);
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.uniform1i(program.samplerUniform, 0);
 
     //  gl.drawElements(gl.TRIANGLES, indexData.length, gl.UNSIGNED_SHORT, 0);
     gl.drawArrays(gl.TRIANGLES, 0, vertexData.length / 3);
@@ -144,6 +153,24 @@ function initMatrixes() {
     glMatrix.mat4.multiply(pvm, pvm, vm);
 
 }
+function handleLoadedTexture(texture) {
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texture.image);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.bindTexture(gl.TEXTURE_2D, null);
+  }
+function initTextures(){
+    texture = gl.createTexture();
+    texture.image = new Image();
+    texture.image.onload = function() {
+      handleLoadedTexture(texture);
+    }
+    let texSrc = document.getElementById('tex').innerHTML;
+    texture.image.src = texSrc;
+   // texture.image.crossOrigin="anonymous";
+}
 
 function initBuffers() {
     vertexBuffer = gl.createBuffer();
@@ -167,16 +194,21 @@ function initBuffers() {
 
     //   console.log(normalData);
 
+    texBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(texData), gl.STATIC_DRAW);
 }
 
 function setAttrubutes() {
   //  colorLoc = gl.getAttribLocation(program, 'color');
     positionLoc = gl.getAttribLocation(program, 'position');
     normalLoc = gl.getAttribLocation(program, 'normal');
+    texLoc = gl.getAttribLocation(program, 'tex');
     u_matrixLoc = gl.getUniformLocation(program, 'u_matrix');
   //  gl.enableVertexAttribArray(colorLoc);
     gl.enableVertexAttribArray(positionLoc);
     gl.enableVertexAttribArray(normalLoc);
+    gl.enableVertexAttribArray(texLoc);
 
 }
 
@@ -247,7 +279,7 @@ window.onload = function () {
         setAttrubutes();
 
         initBuffers();
-
+        initTextures();
         initMatrixes();
 
         //   draw();m
