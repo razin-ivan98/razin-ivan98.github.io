@@ -3,7 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+body{
+    background-color: rgb(56, 123, 216);
+}
 .container{
     width: 80%;
     margin: 0 auto;
@@ -14,7 +16,7 @@
 }
 
 .block{
-    border-radius: 0.5rem;
+    /* border-radius: 0.5rem; */
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 40%;
@@ -42,7 +44,11 @@
     width: 50%;
 }
 h1{
-    font-family: Arial;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
     
+}
+h3{
+    color: #282830;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
