@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: rgb(56, 123, 216);
+    background-color: #21589F;
 }
 .container{
     width: 80%;
@@ -16,39 +16,97 @@ body{
 }
 
 .block{
-    /* border-radius: 0.5rem; */
+    border-radius: 0.5rem;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 40%;
-    min-width: 500px;
+    min-width: 400px;
     background-color: #67a4f4;
+    overflow: hidden;
     margin: 0.5rem;
-    min-height: 10rem;
+    min-height: 5rem;
+    padding: 1rem;
 }
 
 #photo{
     width:40%;
     margin: 0;
-    border-radius: 0.5rem;
 }
 
-.header{
-    display: flex;
-    justify-content: space-between;
+.about-me{
+    background-color: unset;
+    padding: 0;
 }
-.titles{
+.about-me__header{
     display: flex;
+
+    justify-content: space-between;
+    background-color: #67a4f4;
+}
+.about-me__body{
+    margin-top: 0.4rem;
+    background-color: #67a4f4;
+    padding: 1rem;
+}
+.about-me__titles{
+    display: flex;
+    background-color: #67a4f4;
     justify-content: space-around;
     flex-direction: column;
     text-align: center;
-    width: 50%;
+    padding-right: 1rem;
+    width: 60%;
 }
 h1{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
+    font-family: 'PT Sans';
+    color: rgb(220, 243, 255);
     
 }
 h3{
-    color: #282830;
+    color: #3f3f4c;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h2{
+    font-family: 'PT Sans';
+    color: rgb(220, 243, 255);
+}
+
+.text{
+    color: #3f3f4c;
+    font-family: Helvetica ;
+    margin-top: 1rem;
+
+}
+
+
+.list__logo-container{
+
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+}
+.list__logo{
+    max-height: 4rem;
+    max-width: 4rem;;
+}
+.list__item{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+}
+.list__text{
+    margin: 0;
+    flex-basis: 70%;
+}
+
+@media screen and (max-width: 600px){
+    .container{
+        width: 100%;
+    }
+    .block{
+        min-width: unset;
+        flex-basis: 100%;
+    }
 }
