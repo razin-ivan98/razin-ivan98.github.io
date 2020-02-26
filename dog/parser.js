@@ -142,5 +142,5 @@ function parseObj(input) {
     }
    // console.log(vertexData);
   //  console.log(normalData);
-  console.log(texData);
+ // console.log(texData);
 } 

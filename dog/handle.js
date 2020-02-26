@@ -42,3 +42,25 @@ function touchMove(e) {
 
     e.preventDefault();
 }
+
+function objChanged(){
+
+}
+function texChanged(){
+    var file    = document.getElementById('textureFile').files[0];
+    var reader  = new FileReader();
+
+    reader.onloadend = function () {
+       // console.log(reader.result, '0');
+        texture.image.src = reader.result;
+      }
+      if (file) {
+        reader.readAsDataURL(file);
+        
+      }
+    //   texture.image.onload = function() {
+    //     handleLoadedTexture(texture);
+    //   }
+      console.log('ready');
+
+}
