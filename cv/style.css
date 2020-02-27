@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #21589F;
+    background-color: #fff;
 }
 .container{
     width: 80%;
@@ -13,14 +13,14 @@ body{
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: stretch;
-}
 
+}
 .block{
     border-radius: 0.5rem;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 40%;
-    min-width: 400px;
+    min-width: 300px;
     background-color: #67a4f4;
     overflow: hidden;
     margin: 0.5rem;
