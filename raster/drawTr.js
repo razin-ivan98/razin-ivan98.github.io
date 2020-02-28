@@ -1,26 +1,4 @@
-var context;
-var canvasData;
-var canvas;
 
-var tr1 = [[50, 10],
-[10, 10],
-[5, 50],
-
-]
-
-
-var tr2 = [[80, 60],
-[60, 40],
-[80, 50],
-
-]
-
-
-var tr3 = [[50, 10],
-[10, 10],
-[5, 50],
-
-]
 
 var UpdateCanvas = function () {
     context.putImageData(canvasData, 0, 0);
@@ -112,12 +90,12 @@ function drawTriangle(tr) {
     }
 }
 
-window.onload = function () {
-    canvas = document.getElementById('canvas');
-    context = canvas.getContext('2d');
-    this.canvasData = context.getImageData(0, 0, canvas.width, canvas.height);
-    this.drawTriangle(tr1);
-    this.drawTriangle(tr2);
-    this.drawTriangle(tr3);
-    this.render();
-}
+// window.onload = function () {
+//     canvas = document.getElementById('canvas');
+//     context = canvas.getContext('2d');
+//     this.canvasData = context.getImageData(0, 0, canvas.width, canvas.height);
+//     this.drawTriangle(tr1);
+//     this.drawTriangle(tr2);
+//     this.drawTriangle(tr3);
+//     this.render();
+// }
