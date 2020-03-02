@@ -30,6 +30,7 @@ body{
 
 #photo{
     width:40%;
+    height:auto;
     margin: 0;
 }
 
@@ -39,8 +40,8 @@ body{
 }
 .about-me__header{
     display: flex;
+    justify-content: flex-start;
 
-    justify-content: space-between;
     background-color: #67a4f4;
 }
 .about-me__body{
