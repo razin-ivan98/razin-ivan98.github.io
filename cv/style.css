@@ -154,7 +154,7 @@ body{
     background-color: #67a4f4;
     overflow: hidden;
     margin: 0.5rem;
-    min-height: 5rem;
+    /* min-height: 5rem; */
     padding: 1rem;
 }
 
@@ -162,6 +162,7 @@ body{
     width:40%;
     height:auto;
     margin: 0;
+    align-self: flex-end;
 }
 
 .about-me{
