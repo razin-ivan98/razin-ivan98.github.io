@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -109,5 +109,159 @@ h2{
     .block{
         min-width: unset;
         flex-basis: 100%;
+    }
+} */
+
+
+
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+body{
+    background-color: #fff;
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+
+}
+.block{
+    border-radius: 0.5rem;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -ms-flex-negative: 1;
+        flex-shrink: 1;
+    -ms-flex-preferred-size: 40%;
+        flex-basis: 40%;
+    min-width: 300px;
+    background-color: #67a4f4;
+    overflow: hidden;
+    margin: 0.5rem;
+    min-height: 5rem;
+    padding: 1rem;
+}
+
+#photo{
+    width:40%;
+    height:auto;
+    margin: 0;
+}
+
+.about-me{
+    background-color: unset;
+    padding: 0;
+}
+.about-me__header{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+
+    background-color: #67a4f4;
+}
+.about-me__body{
+    margin-top: 0.4rem;
+    background-color: #67a4f4;
+    padding: 1rem;
+}
+.about-me__titles{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #67a4f4;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    padding-right: 1rem;
+    width: 60%;
+}
+h1{
+    font-family: 'PT Sans';
+    color: rgb(220, 243, 255);
+    
+}
+h3{
+    color: #3f3f4c;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h2{
+    font-family: 'PT Sans';
+    color: rgb(220, 243, 255);
+}
+
+.text{
+    color: #3f3f4c;
+    font-family: Helvetica ;
+    margin-top: 1rem;
+
+}
+
+
+.list__logo-container{
+
+    -ms-flex-preferred-size: 30%;
+
+        flex-basis: 30%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.list__logo{
+    max-height: 4rem;
+    max-width: 4rem;;
+}
+.list__item{
+    margin-top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    
+}
+.list__text{
+    margin: 0;
+    -ms-flex-preferred-size: 70%;
+        flex-basis: 70%;
+}
+
+@media screen and (max-width: 600px){
+    .container{
+        width: 100%;
+    }
+    .block{
+        min-width: unset;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
     }
 }
