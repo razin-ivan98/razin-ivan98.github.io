@@ -25,7 +25,10 @@ header{
     align-items: center;
 }
 nav{
-    width: max-content;
+    /* width: max-content; */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .menu-item{
     text-transform: uppercase;
@@ -65,6 +68,7 @@ input{
     border: none;
     border-radius: 0.1rem;
     padding: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 input::-webkit-input-placeholder{
     color: #a9a9a9;
@@ -95,6 +99,7 @@ input::placeholder{
 
 .home__form{
     margin-top: 2rem;
+
 }
 
 .home__laptop img{
@@ -299,9 +304,14 @@ input::placeholder{
 }
 
 
-@media screen and (max-width: 700px){
-    .price__list{
+@media screen and (max-width: 800px){
+    .list{
         flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .list__item{
+        flex-basis: 80%;
     }
 
     .container{
@@ -309,5 +319,16 @@ input::placeholder{
     }
     .services__list .list__item{
         width: 100%;
+    }
+
+
+    .home__laptop img{
+        width: 80vw;
+        height: auto;
+    }
+
+    .about__container{
+        width: 80%;
+        padding: 1rem 0 1rem 1rem;
     }
 }
