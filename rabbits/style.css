@@ -12,7 +12,7 @@ header{
     color: yellow;
 }
 
-#canvas{
+#canvas, #diagram{
     display: block;
     width: 100%;
     max-width: 500px;
@@ -24,17 +24,20 @@ body{
 }
 
 .buttons-container{
+    width: 100%;
+    max-width: 500px;
+    margin: 0.5rem auto;
     text-align: center;
 }
 button{
-    width: 40%;
+    width: 30%;
     border: none;
     border-radius: 0.1rem;
     background-color: #ffc155;
     color: #fff;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
 }
 

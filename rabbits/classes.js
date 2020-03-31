@@ -20,10 +20,18 @@ Evolution.prototype.addRabbit = function (rabbit) {
     this.rabbitsCount++
 }
 Evolution.prototype.killRabbit = function (rabbitId) {
-    console.log('kiill');
+    console.log('kiilRabbit');
+    if (!(rabbitId in this.rabbits))
+        return
 
     delete this.rabbits[rabbitId]
     this.rabbitsCount--
+}
+Evolution.prototype.killFox = function (foxId) {
+    console.log('kiilFox');
+
+    delete this.foxes[foxId]
+    this.foxesCount--
 }
 Evolution.prototype.killFood = function (foodId) {
     const value = this.food[foodId].value
@@ -49,6 +57,8 @@ Evolution.prototype.addFood = function (food) {
     this.foodCount++
 }
 Evolution.prototype.getNearestFoodFor = function (orgId) {
+    if (!(orgId in this.rabbits))
+        return false
     let orgCoords = this.rabbits[orgId].coords
     let nearest = false, nearestDistance = 9999.0, curr
     for (let key in this.food) {
@@ -76,7 +86,7 @@ Evolution.prototype.getNearestFoodFor = function (orgId) {
     return false
 }
 Evolution.prototype.getNearestRabbitFor = function (orgId, orgType, aimType) {
-    let orgCoords = this.rabbits[orgId].coords
+    let orgCoords = this[orgType][orgId].coords
     let nearest = false, nearestDistance = 9999.0, curr
     for (let key in this.rabbits) {
         if (key === orgId)
@@ -87,7 +97,7 @@ Evolution.prototype.getNearestRabbitFor = function (orgId, orgType, aimType) {
             nearest = key
         }
     }
-    if (nearestDistance > this.rabbits[orgId].instinct)
+    if (nearestDistance > this[orgType][orgId].instinct)
         return false
     if (nearest !== false) {
         // if (nearest in this.rabbitsWatcher)
@@ -97,9 +107,38 @@ Evolution.prototype.getNearestRabbitFor = function (orgId, orgType, aimType) {
         //     this.rabbitsWatcher[nearest][orgId] = true
         // }
         return {
-            type: 'reproduction',
+            type: aimType,
             id: nearest,
             coords: this.rabbits[nearest].coords
+        }
+    }
+    return false
+}
+Evolution.prototype.getNearestFoxFor = function (orgId, orgType, aimType) {
+    let orgCoords = this[orgType][orgId].coords
+    let nearest = false, nearestDistance = 9999.0, curr
+    for (let key in this.foxes) {
+        if (key === orgId)
+            continue;
+        curr = this.foxes[key].getDistance(orgCoords)
+        if (curr < nearestDistance) {
+            nearestDistance = curr
+            nearest = key
+        }
+    }
+    if (nearestDistance > this[orgType][orgId].instinct)
+        return false
+    if (nearest !== false) {
+        // if (nearest in this.rabbitsWatcher)
+        //     this.rabbitsWatcher[nearest][orgId] = true
+        // else {
+        //     this.rabbitsWatcher[nearest] = {}
+        //     this.rabbitsWatcher[nearest][orgId] = true
+        // }
+        return {
+            type: aimType,
+            id: nearest,
+            coords: this.foxes[nearest].coords
         }
     }
     return false
@@ -115,10 +154,15 @@ Evolution.prototype.getRandomAim = function (type) {
     }
 }
 Evolution.prototype.draw = function () {
+    let i = 0
     for (let key in this.rabbits) {
         drawCicle(this.rabbits[key].coords.x,
             this.rabbits[key].coords.y, 10, `yellow`)
+        drawRect(i * widthRabbit, 150, widthRabbit, -this.rabbits[key].speed * 50, 'blue')
+        drawRect(widthDiagram + i * widthRabbit, 150, widthRabbit, -this.rabbits[key].instinct, 'red')
+        i++
     }
+    i = 0
     for (let key in this.food) {
         drawCicle(this.food[key].coords.x,
             this.food[key].coords.y, 7, 'cyan')
@@ -126,7 +170,22 @@ Evolution.prototype.draw = function () {
     for (let key in this.foxes) {
         drawCicle(this.foxes[key].coords.x,
             this.foxes[key].coords.y, 15, 'orange')
+        drawRect(widthDiagram * 2 + i * widthFox, 150, widthFox, -this.foxes[key].speed * 50, 'blue')
+        drawRect(widthDiagram * 3 + i * widthFox, 150, widthFox, -this.foxes[key].instinct, 'red')
+        i++
     }
+    drawRect(0, 150, widthDiagram * 4, -50, 'rgba(255,255,0,0.2)')
+}
+Evolution.prototype.mutate = function (prop) {
+    let variety = Math.random()
+    let newP = prop;
+    if (variety > 1 - mutationVariety)
+        newP += mutationValue * newP
+    else if (variety > 1 - 2 * mutationVariety)
+        newP -= mutationValue * newP
+    if (newP > 0)
+        return newP
+    return prop
 }
 Evolution.prototype.tryHaveBaby = function (id1, id2) {
     if (!(id2 in this.rabbits)) {
@@ -138,17 +197,40 @@ Evolution.prototype.tryHaveBaby = function (id1, id2) {
         this.rabbits[id2].aim.type === 'reproduction') {
         let newRabbit = new Rabbit(this.rabbits[id1].coords)
         newRabbit.age = 0.0
+        newRabbit.speed = (this.rabbits[id1].speed + this.rabbits[id2].speed) / 2
+        newRabbit.speed = this.mutate(newRabbit.speed)
+
+        newRabbit.instinct = (this.rabbits[id1].instinct + this.rabbits[id2].instinct) / 2
+        newRabbit.instinct = this.mutate(newRabbit.instinct)
+
         this.addRabbit(newRabbit)
         this.rabbits[id1].libido = 1.0
         this.rabbits[id2].libido = 1.0
     }
     this.rabbits[id1].chooseAim()
     this.rabbits[id2].chooseAim()
+}
+Evolution.prototype.tryHaveFoxBaby = function (id1, id2) {
+    if (!(id2 in this.foxes)) {
+        this.foxes[id1].chooseAim()
+        return
+    }
 
+    if (this.foxes[id1].aim.type === 'reproduction' &&
+        this.foxes[id2].aim.type === 'reproduction') {
+        let newFox = new Rabbit(this.foxes[id1].coords)
+        newFox.speed = (this.foxes[id1].speed + this.foxes[id2].speed) / 2
+        newFox.speed = this.mutate(newFox.speed)
 
-
-
-
+        newFox.instinct = (this.foxes[id1].instinct + this.foxes[id2].instinct) / 2
+        newFox.instinct = this.mutate(newFox.instinct)
+        newFox.age = 0.0
+        this.addFox(newFox)
+        this.foxes[id1].libido = 1.0
+        this.foxes[id2].libido = 1.0
+    }
+    this.foxes[id1].chooseAim()
+    this.foxes[id2].chooseAim()
 }
 
 Evolution.prototype.update = function () {
@@ -170,7 +252,14 @@ Evolution.prototype.update = function () {
 
     }
     for (let key in this.foxes) {
-
+        if (this.foxes[key].aim.type === 'none') {
+            let aim = evolution.getNearestRabbitFor(key, 'foxes', 'food')
+            if (aim)
+                this.foxes[key].chooseAim()
+        }
+        this.foxes[key].moveToAim(duration)
+        if (this.foxes[key].hunger < 0.0)
+            evolution.killFox(this.foxes[key].id)
     }
 }
 
@@ -238,14 +327,17 @@ Fox.prototype.finishAim = function () {
         this.hunger = 1.0
         evolution.killRabbit(this.aim.id)
         this.chooseAim()
+    } else if (this.aim.type === 'none') {
+        this.aim = evolution.getRandomAim('none')
+    } else if (this.aim.type === 'reproduction') {
+        evolution.tryHaveFoxBaby(this.id, this.aim.id)
     }
 }
 Fox.prototype.chooseAim = function () {
-    if (this.hunger < this.libido) {
-        evolution.getNearestRabbitFor(this.id)
+    if (this.hunger <= this.libido || this.hunger < 0.4) {
+        this.aim = evolution.getNearestRabbitFor(this.id, 'foxes', 'food') || evolution.getRandomAim('none')
     } else {
-        evolution.getNearestFoxFor(this.id)
-
+        this.aim = evolution.getNearestFoxFor(this.id, 'foxes', 'reproduction') || evolution.getRandomAim('none')
     }
 }
 

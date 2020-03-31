@@ -1,6 +1,12 @@
 let ctx;
 let countH1;
+let countFH1;
+
 let canvas;
+let canvasDiagram;
+
+let ctxDiagram;
+
 let evolution;
 const mutationVariety = 0.5
 const mutationValue = 0.1
@@ -11,6 +17,10 @@ const mapWidth = 500
 const mapHeight = 500
 let lastTime = 0
 
+let widthDiagram = 20
+let widthFox = 10
+let widthRabbit = 10
+
 let pause = true
 
 function drawCicle(x, y, radius, color) {
@@ -19,10 +29,26 @@ function drawCicle(x, y, radius, color) {
     ctx.fillStyle = color
     ctx.fill();
 }
+function drawRect(x, y, w, h, color) {
+    ctxDiagram.beginPath();
+    ctxDiagram.rect(x, y, w, h);
+    ctxDiagram.fillStyle = color
+    ctxDiagram.fill();
+}
 
 function update() {
-    let status = true
+    // let status = true
+
+
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctxDiagram.clearRect(0, 0, canvasDiagram.width, canvasDiagram.height);
+
+    widthFox = widthDiagram / evolution.foxesCount
+    widthRabbit = widthDiagram / evolution.rabbitsCount
+
+
+
     //  console.log(evolution.organisms);
 
     drawCicle(canvas.width / 2, canvas.height / 2, canvas.width, 'green');
@@ -31,11 +57,28 @@ function update() {
     evolution.draw()
     if (!pause) window.requestAnimationFrame(update)
     countH1.innerHTML = evolution.rabbitsCount
+    countFH1.innerHTML = evolution.foxesCount
+
+}
+function newrabbit() {
+    evolution.addRabbit(new Rabbit({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
+}
+function newfox() {
+    evolution.addFox(new Fox({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
+}
+function newfood() {
+    evolution.addFood(new Food({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
 }
 
 window.onload = function () {
+
+    widthDiagram = 500 / 4
+
     canvas = this.document.getElementById('canvas')
     ctx = canvas.getContext('2d')
+    canvasDiagram = this.document.getElementById('diagram')
+    ctxDiagram = canvasDiagram.getContext('2d')
+
     countH1 = this.document.getElementById('countRabbits')
     countFH1 = this.document.getElementById('countFoxes')
 
@@ -60,12 +103,19 @@ window.onload = function () {
     evolution.addRabbit(new Rabbit({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
     evolution.addRabbit(new Rabbit({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
     evolution.addRabbit(new Rabbit({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
+    evolution.addRabbit(new Rabbit({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
+    evolution.addRabbit(new Rabbit({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
+    evolution.addRabbit(new Rabbit({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
+    evolution.addRabbit(new Rabbit({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
 
 
 
-    // evolution.addFox(new Fox({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
-    //  evolution.addFox(new Fox({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
-    // evolution.addFox(new Fox({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
+
+    evolution.addFox(new Fox({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
+    evolution.addFox(new Fox({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
+    evolution.addFox(new Fox({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
+    evolution.addFox(new Fox({ x: this.Math.random() * 500, y: this.Math.random() * 500 }))
+
 
 
 
