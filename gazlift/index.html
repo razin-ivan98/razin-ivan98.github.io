@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>GazLift</title>
+    <script src="main.js"></script>
+    <script src="draw.js"></script>
+    <script src="calc.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>GazLift</h1>
+    </header>
+    <div class="container">
+        <section>
+            <canvas height='500' width='500' id='canvas'>Обновите браузер</canvas>
+
+        </section>
+        <section>
+            <div class="buttons-container">
+                <h4>Параметры крышки</h4>
+
+                Длина <input id="hatchLength" class="settings_input" type="number" value="960"
+                    onchange="L = this.value; update();">
+                Высота <input id="hatchHeight" class="settings_input" type="number" value="45"
+                    onchange="h = this.value; update();">
+                Масса <input id="hatchMass" class="settings_input" type="number" onchange="m = this.value; update();">
+            </div>
+            <div class="buttons-container">
+                <h4>Крепление на крышке</h4>
+                x <input id="hatchBracingX" class="settings_input" value="200" type="number"
+                    onchange="changeHatchBracingX(this.value); update();">
+                y <input id="hatchBracingY" class="settings_input" value="0" type="number"
+                    onchange="changeHatchBracingY(this.value); update();">
+            </div>
+            <div class="buttons-container">
+                <h4>Крепление на раме</h4>
+                x <input id="frameBracingX" class="settings_input" value="10" type="number"
+                    onchange="changeFrameBracingX(this.value); update();">
+                y <input id="frameBracingY" class="settings_input" value="60" type="number"
+                    onchange="changeFrameBracingY(this.value); update();">
+            </div>
+            <div class="buttons-container">
+                <h4>Параметры лифта</h4>
+                длина <input id="liftLength" class="settings_input" value="460" type="number"
+                    onchange="changeLiftLength(this.value); update();">
+                ход штока <input id="liftStroke" class="settings_input" value="200" type="number" onchange="changeLiftStroke(this.value);
+                    update();">
+
+
+            </div>
+            <div class="buttons-container">
+                <h4>Параметры рукояти</h4>
+                расстояние от шарнира <input id="handlePos" class="settings_input" value="600" type="number"
+                    onchange="handle.pos  = Number(this.value); update();">
+                направление приложения силы <input id="handleDir" class="settings_input" value="200" type="number"
+                    onchange="handle.dir = this.value / 360 *2* Math.PI;
+                    update();">
+
+            </div>
+
+            <div class="buttons-container">
+                <input type="range" min="0" max="2" value="0" step="0.01" oninput="rotateHatch(this.value); update();">
+            </div>
+            <div id="result" class="buttons-container">
+            </div>
+        </section>
+    </div>
+    <p>version 1.0</p>
+</body>
+
+</html>

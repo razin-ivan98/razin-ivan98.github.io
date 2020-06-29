@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    padding: 0.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    text-align: center;
+    background-color: peru;
+    color: yellow;
+}
+
+#canvas{
+    display: block;
+    margin: 0 auto;
+}
+body{
+    background-color: palegoldenrod;
+    overflow: hidden;
+}
+
+.buttons-container{
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+button{
+    width: 40%;
+    border: none;
+    border-radius: 0.1rem;
+    background-color: #ffc155;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+p{
+    text-align: center;
+    color: peru;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 2rem;
+}
+
+.active{
+    background-color: peru;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+section{
+    flex-grow: 1;
+}
+.settings_input{
+    width: 60px;
+}
