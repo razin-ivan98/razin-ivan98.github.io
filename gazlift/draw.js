@@ -45,13 +45,13 @@ function drawAxise() {
 
     ctx.beginPath();
     ctx.moveTo(center.x / 500 * width, 0);
-    ctx.lineTo(center.x / 500 * width, canvas.height / 500 * width);
+    ctx.lineTo(center.x / 500 * width, width);
     ctx.strokeStyle = 'black';
     ctx.stroke();
 
     ctx.beginPath();
     ctx.moveTo(0, center.y / 500 * width);
-    ctx.lineTo(canvas.width / 500 * width, center.y / 500 * width);
+    ctx.lineTo(width, center.y / 500 * width);
     ctx.strokeStyle = 'black';
     ctx.stroke();
 }
