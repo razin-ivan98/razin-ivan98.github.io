@@ -41,7 +41,7 @@ var frameBracing = { x: 25, y: -200 };
 
 window.onload = function () {
 
-    width = width = document.body.clientWidth;
+    width = width = document.body.clientWidth / 2;
     canvas = this.document.querySelector('#canvas');
     if (width < 500) {
         canvas.setAttribute('width', this.width);
