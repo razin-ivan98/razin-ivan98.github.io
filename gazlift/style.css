@@ -56,3 +56,39 @@ section{
 .settings_input{
     width: 60px;
 }
+table{
+    margin: 0 auto;
+    width: 90%;
+}
+
+.popup{
+    display: none;
+}
+
+.popup-opened{
+    display:block;
+    overflow-y: auto;
+    position: fixed;
+    width: 96vw;
+    height: 96vh;
+    top: 2vh;
+    left:2vw;
+    background-color: khaki;
+    border-radius: 20px;
+    z-index: 20;
+}
+#close-popup-btn{
+    position: fixed;
+    top: 3vh;
+    right: 4vw;
+    width: 40px;
+}
+
+.insert{
+    font-size: 0.8rem;
+    width: 5rem;
+}
+
+.range{
+    width: 80%;
+}

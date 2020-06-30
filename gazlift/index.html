@@ -8,10 +8,50 @@
     <script src="main.js"></script>
     <script src="draw.js"></script>
     <script src="calc.js"></script>
+    <script src="export.js"></script>
+
+
+    <script lang="javascript" src="xlsx.mini.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div id="popup" class="popup">
+        <button id="close-popup-btn" onclick="wind.className = 'popup';">x</button>
+        <section>
+            <div class="buttons-container">
+                <h2>Таблица предлагаемых вариантов</h2>
+            </div>
+            <div class="buttons-container">
+                <table id="data-table" border="1" bordercolor="green">
+                    <tbody id="tbody">
+                        <tr>
+                            <th colspan="3">параметры лифта</th>
+                            <th colspan="2">Позиция шарнира на крышке</th>
+                            <th colspan="2">Позиция шарнира на раме</th>
+                            <th rowspan="2">Максимальный угол</th>
+                            <th rowspan="2">Сила на закрытие</th>
+
+                        </tr>
+                        <tr>
+                            <th>Длина</th>
+                            <th>Ход штока</th>
+                            <th>Сила</th>
+                            <th>x</th>
+                            <th>y</th>
+                            <th>x</th>
+                            <th>y</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="buttons-container">
+                <button onclick="exportXLXS();">Экспорт в XLXS</button>
+            </div>
+
+        </section>
+    </div>
     <header>
         <h1>GazLift</h1>
     </header>
@@ -64,13 +104,24 @@
             </div>
 
             <div class="buttons-container">
-                <input type="range" min="0" max="2" value="0" step="0.01" oninput="rotateHatch(this.value); update();">
+                <input class="range" type="range" min="0" max="0.6" value="0" step="0.001"
+                    oninput="rotateHatch(this.value); update();">
             </div>
             <div id="result" class="buttons-container">
             </div>
+            <div class="buttons-container">
+                <!-- <form action="variants.html" method="get" target="_blank">
+                    <button type="submit">ok</button>
+                </form> -->
+
+
+
+
+                <button onclick="calcSheet();">Рассчитать варианты</button>
+            </div>
         </section>
     </div>
-    <p>version 1.0</p>
+    <p>version 2.0</p>
 </body>
 
 </html>
