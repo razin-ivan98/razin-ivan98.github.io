@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+}
+
+#menu {
+  text-align: center;
+  background-color: aqua;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  width: 20rem;
+  margin: 0 auto;
+}
