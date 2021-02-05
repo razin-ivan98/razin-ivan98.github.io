@@ -1,9 +1,9 @@
 {
 "companyName": "DefaultCompany",
-"productName": "New Unity Project",
-"productVersion": "0.1",
+"productName": "KnightFight",
+"productVersion": "0.2",
 "dataUrl": "Game.data.unityweb",
-"wasmCodeUrl": "Game.wasm.code.unityweb",
+"wasmCodeUrl": "Game.wasm",
 "wasmFrameworkUrl": "Game.wasm.framework.unityweb",
 "graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
 "webglContextAttributes": {"preserveDrawingBuffer": false},
