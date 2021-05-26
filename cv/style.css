@@ -1,141 +1,130 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-body{
-    background-color: #fff;
+body {
+  background-color: #fff;
 }
-.container{
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    
-    /* height: 2000px; */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.column {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-direction: column;
+  flex-basis: 40%;
+}
+.block {
+  border-radius: 0.5rem;
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-width: 350px;
 
-    align-items: stretch;
-
-}
-.column{
-    display:flex;
-    flex-grow:1;
-    flex-shrink: 1;
-    flex-direction: column;
-    flex-basis: 40%;
-}
-.block{
-    border-radius: 0.5rem;
-    flex-grow: 1; 
-    flex-shrink: 1;
-    /*flex-basis: 40%; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    /* width: 40%; */
-    min-width: 350px;
-    
-    background-color: #67a4f4;
-    overflow: hidden;
-    margin: 0.5rem;
-    /* min-height: 5rem; */
-    padding: 1rem;
+  background-color: #67a4f4;
+  overflow: hidden;
+  margin: 0.5rem;
+  padding: 1rem;
 }
 
-.break{
-    height: 100%;
-    width: 40%;
+.break {
+  height: 100%;
+  width: 40%;
 }
 
-#photo{
-    width:40%;
-    height:auto;
-    margin: 0;
-    align-self: flex-end;
+#photo {
+  width: 40%;
+  height: auto;
+  margin: 0;
+  align-self: flex-end;
 }
 
-.about-me{
-    background-color: unset;
-    padding: 0;
-    flex-grow: 0;
+.about-me {
+  background-color: unset;
+  padding: 0;
+  flex-grow: 0;
 }
-.about-me__header{
+.about-me__header {
+  display: flex;
+  justify-content: flex-start;
 
-    display: flex;
-    justify-content: flex-start;
+  background-color: #67a4f4;
+}
+.about-me__body {
+  margin-top: 0.4rem;
+  background-color: #67a4f4;
+  padding: 1rem;
+}
+.about-me__titles {
+  display: flex;
+  background-color: #67a4f4;
+  justify-content: space-around;
 
-    background-color: #67a4f4;
+  flex-direction: column;
+  text-align: center;
+  padding-right: 1rem;
+  width: 60%;
 }
-.about-me__body{
-    margin-top: 0.4rem;
-    background-color: #67a4f4;
-    padding: 1rem;
+h1 {
+  font-family: "PT Sans";
+  color: rgb(220, 243, 255);
 }
-.about-me__titles{
-    display: flex;
-    background-color: #67a4f4;
-    justify-content: space-around;
-
-    flex-direction: column;
-    text-align: center;
-    padding-right: 1rem;
-    width: 60%;
+h3 {
+  color: #3f3f4c;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-h1{
-    font-family: 'PT Sans';
-    color: rgb(220, 243, 255);
-    
-}
-h3{
-    color: #3f3f4c;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-h2{
-    font-family: 'PT Sans';
-    color: rgb(220, 243, 255);
+h2 {
+  font-family: "PT Sans";
+  color: rgb(220, 243, 255);
 }
 
-.text{
-    color: #3f3f4c;
-    font-family: Helvetica ;
-    margin-top: 1rem;
-
+.text {
+  color: #3f3f4c;
+  font-family: Helvetica;
+  margin-top: 1rem;
 }
 
-
-.list__logo-container{
-
-
-    flex-basis: 30%;
-    display: flex;
-    justify-content: center;
+.list__logo-container {
+  flex-basis: 30%;
+  display: flex;
+  justify-content: center;
 }
-.list__logo{
-    max-height: 4rem;
-    max-width: 4rem;;
+.list__logo {
+  max-height: 4rem;
+  max-width: 4rem;
 }
-.list__item{
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
+.list__item {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
 
-    align-items: flex-start;
-    
+  align-items: flex-start;
 }
-.list__text{
-    margin: 0;
-    flex-basis: 70%;
+.list__text {
+  margin: 0;
+  flex-basis: 70%;
 }
 
-@media screen and (max-width: 600px){
-    .column{
-        flex-basis: 100%;
-    }
-    .container{
-        width: 100%;
-    }
-    .block{
-        min-width: unset;
-        /* flex-basis: 100%; */
-    }
+.marker_list {
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    flex-basis: 100%;
+  }
+  .container {
+    width: 100%;
+  }
+  .block {
+    min-width: unset;
+  }
 }
